@@ -17,4 +17,9 @@ public class IndexController {
         model.addAttribute("employeers",service.findAllDesc());
         return "main";
     }
+    @GetMapping("/employee")
+    public String employee(Model model)
+    {
+        return "employee_detail";
+    }
 }
