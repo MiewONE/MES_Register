@@ -14,8 +14,7 @@ public class RegisterEmController {
     private final RegisterService service;
     @PostMapping("/api/register")
     public String save(@RequestBody RegisterEmDto dto) {
-//        System.out.println(dto.getEmployee_number());
-//        System.out.println("있네"+service.finById_pk(dto.getEmployee_number()));
+
         String tmp = null;
         String tt =dto.getEmployee_number();
         RegisterEmResDto ts =service.findByEmployee_number(tt);
@@ -27,12 +26,17 @@ public class RegisterEmController {
         {
             return "사원번호 : "+service.save(dto)+",사원 이름 :"+dto.getKr_name()+"인 사원 등록이 완료되었습니다";//'사원 등록이 완료되었습니다'+
         }
-//        return service.save(dto);
-
     }
-//    @GetMapping("/api/employeer/{employeer_number}")
-//    public RegisterEmResDto findById(@PathVariable String employeer_number)
-//    {
-//        return service.findByEmployee_number(employeer_number);
-//    }
+    @PutMapping("/api/update/{employee_number}")
+    public String update(@PathVariable String employee_number,@RequestBody RegisterEmDto reqDto)
+    {
+        return service.update(employee_number,reqDto);
+    }
+    @DeleteMapping("/api/delete/{employee_number}")
+    public String delete(@PathVariable String employee_number)
+    {
+        service.delete(employee_number);
+        return employee_number;
+    }
+
 }

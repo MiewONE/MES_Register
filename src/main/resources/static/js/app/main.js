@@ -45,10 +45,10 @@ var index ={
             data:JSON.stringify(data)
         }).done(function(msg)
         {
-            alert(JSON.stringify(msg.responseText));
+            alert(msg.responseText);
             window.location.href='/';
         }).fail(function (error){
-            alert(JSON.stringify(error));
+            alert(error.responseText);
         })
 
     },
@@ -75,29 +75,29 @@ var index ={
             last_updated_by:$('#lastupdatedby').val(),
             last_update_date:$('#lastupdatedate').val()
         };
-        var employeecode = $('#employeercode').val();
+        var employeenumber = $('#employeenumber').val();
         $.ajax({
             type:'PUT',
-            url:'/api/updateEm/'+employeecode,
+            url:'/api/update/'+employeenumber,
             dataType:'json',
             contentType:'application/json;charset=utf-8',
             data:JSON.stringify(data)
         }).done(function()
         {
             alert('사원 수정이 완료되었습니다')
-            window.location.href='/';
-        }).file(function (error){
+            window.location.href='/employee/'+employeenumber;
+        }).fail(function (error){
             alert(JSON.stringify(error));
         })
 
     },
     delete : function()
     {
-        var employeercode = $('#employeercode').val();
+        var employeenumber = $('#employeenumber').val();
 
         $.ajax({
             type:'DELETE',
-            url:'/api/deleteEm'+employeercode,
+            url:'/api/delete/'+employeenumber,
             dataType:'json',
             contentType:'application/json; charset=utf-8'
         }).done(function()

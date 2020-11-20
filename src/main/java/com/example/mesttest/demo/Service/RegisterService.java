@@ -36,4 +36,37 @@ public class RegisterService {
                 .map(RegisterEmResDto::new) // == .map(posts -> new PostsListResponseDto(posts)
                 .collect(Collectors.toList());  // postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto 변환 -> List로 반환하는 메소드.
     }
+
+    public void delete(String employee_number)
+    {
+        RegisterEm entity = rep.findByEmployee_number(employee_number);
+        rep.delete(entity);
+    }
+    @Transactional
+    public String update(String employee_number,RegisterEmDto reqDto)
+    {
+        RegisterEm em = rep.findByEmployee_number(employee_number);
+        em.update(
+                reqDto.getOrg_id(),
+                reqDto.getCompany_id(),
+                reqDto.getEmployee_number(),
+                reqDto.getInspector_type(),
+                reqDto.getKr_name(),
+                reqDto.getDepartment_code(),
+                reqDto.getPosition_code(),
+                reqDto.getUpper_employee_number(),
+                reqDto.getLeader_yn(),
+                reqDto.getEffective_start_date(),
+                reqDto.getEffective_end_date(),
+                reqDto.getEmail(),
+                reqDto.getPhone_number(),
+                reqDto.getUse_yn(),
+                reqDto.getRemarks(),
+                reqDto.getCreated_by(),
+                reqDto.getCreation_date(),
+                reqDto.getLast_updated_by(),
+                reqDto.getLast_update_date()
+        );
+        return employee_number;
+    }
 }

@@ -45,6 +45,7 @@ public class RegisterEmResDto {
         this.use_yn = entity.getUse_yn();
         this.remarks = entity.getRemarks();
         this.created_by = entity.getCreated_by();
+        this.creation_date = entity.getCreation_date();
         this.last_update_date = entity.getLast_update_date();
         this.last_updated_by = entity.getLast_updated_by();
     }

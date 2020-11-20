@@ -1,4 +1,4 @@
-<table border="1">
+<table class="table" border="1">
     <thead>
         <tr>
             <th>사원코드</th>
@@ -9,15 +9,16 @@
     <tbody>
         {{#employeers}}
             <tr>
-                <td><a href="/api/employeer/{{employee_number}}"/>{{employee_number}}</td>
-                <td><a href="/api/employeer/{{employee_number}}"/>{{kr_name}}</td>
+                <td><a href="/employee/{{employee_number}}"/>{{employee_number}}</td>
+                <td><a href="/employee/{{employee_number}}"/>{{kr_name}}</td>
                 <td>{{position_code}}</td>
             </tr>
         {{/employeers}}
 
         <tr>
             <td>총 인원</td>
-            <td rowspan="3">인원수 넣기</td>
+            <td colspan="3">인원수 넣기</td>
+
         </tr>
     </tbody>
 
