@@ -48,37 +48,41 @@ public class RegisterEmTest {
     @Test
     public void RegisterEm_register() throws Exception
     {
-        RegisterEmDto reqDto =RegisterEmDto.builder()
-                .org_id(6L)
-                .company_id(6L)
-                .employee_number("6")
-                .inspector_type("1")
-                .kr_name("park")
-                .department_code("123")
-                .position_code("123")
-                .upper_employee_number("123")
-                .leader_yn("1")
-                .effective_start_date(date)
-                .effective_end_date(date)
-                .email("email")
-                .phone_number("123")
-                .use_yn("1")
-                .remarks("123")
-                .created_by("123")
-                .creation_date(date)
-                .last_updated_by("213")
-                .last_update_date(date)
-                .build();
+        for(int i=8;i<100;i++)
+        {
+            RegisterEmDto reqDto =RegisterEmDto.builder()
+                    .org_id(6L)
+                    .company_id(6L)
+                    .employee_number(i+"")
+                    .inspector_type("1")
+                    .kr_name("park")
+                    .department_code("123")
+                    .position_code("123")
+                    .upper_employee_number("123")
+                    .leader_yn("1")
+                    .effective_start_date(date)
+                    .effective_end_date(date)
+                    .email("email")
+                    .phone_number("123")
+                    .use_yn("1")
+                    .remarks("123")
+                    .created_by("123")
+                    .creation_date(date)
+                    .last_updated_by("213")
+                    .last_update_date(date)
+                    .build();
 
-        String url ="http://localhost:"+port+"/api/register";
+            String url ="http://localhost:"+port+"/api/register";
 
-        ResponseEntity<String> resEntity = restTemplate.postForEntity(url,reqDto,String.class);
+            ResponseEntity<String> resEntity = restTemplate.postForEntity(url,reqDto,String.class);
 
 
-        assertThat(resEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(resEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-        List<RegisterEm> all =rep.findAll();
-        assertThat(all.get(0).getEmployee_number()).isEqualTo("1");
+            List<RegisterEm> all =rep.findAll();
+            assertThat(all.get(0).getEmployee_number()).isEqualTo("1");
+        }
+
     }
 
     @Test

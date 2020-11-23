@@ -1,32 +1,56 @@
-html,body,.container,.row{
+html,head,body{
+    width: 99%;
     height: 100%;
-    width: 100%;
 }
 
-.container .col6s{
-    width: 50%;
-    height: 100%;
-    /* background-color: darkcyan; */
-}
-table{
-    width: 100%;
-    text-align: center;
+.container{
+    display: grid;
+    grid-template-columns: 1.5fr 4fr;
+    grid-auto-rows: minmax(50px,auto);
+    column-gap: 1%;
+    /* row-gap: 10%; */
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: burlywood;
 }
 
-.container .col6s iframe{
-    width: 100%;
+.search{
+    display: flex;
+    justify-content: center;
+}
+.header_container{
+    display: flex;
+    justify-content: center;
+}
+.item:nth-child(1){
+    grid-column:1/3;
+    grid-row: 1/2;
+    /* background-color: cadetblue; */
+    margin-top: 3%;
+}
+.item{
+    /* background-color: wheat; */
+    /* width: 100%; */
+}
+.item:nth-last-child(1){
+    /* background-color: teal; */
     height: 100%;
 }
-.btns{
-    margin: 5px;
+.input_container{
+    /* background-color: violet; */
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100%;
+    /* row-gap: 10%; */
 }
 .inputform{
     display: flex;
     justify-content: space-between;
     width: 80%;
-    margin: .5rem;
+    margin-left: 10%;
+    margin-top: 5px;
 }
-.inputform label{
-    position: relative;
-    left : 20%
+.btn_container{
+    display: flex;
+    flex-direction: row-reverse;
 }
