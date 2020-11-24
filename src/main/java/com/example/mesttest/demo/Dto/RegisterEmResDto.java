@@ -7,46 +7,46 @@ import java.util.Date;
 
 @Getter
 public class RegisterEmResDto {
-    private Long org_id; // 사업장
-    private Long company_id; // 공장
-    private String employee_number; // 사원번호
-    private String inspector_type; // 사원구분
-    private String kr_name;
-    private String department_code;
-    private String position_code;
-    private String upper_employee_number;
-    private String leader_yn;
-    private Date effective_start_date;
-    private Date effective_end_date;
+    private Long orgid; // 사업장
+    private Long companyid; // 공장
+    private String employeenumber; // 사원번호
+    private String inspectortype; // 사원구분
+    private String krname;
+    private String departmentcode;
+    private String positioncode;
+    private String upperemployeenumber;
+    private String leaderyn;
+    private Date effectivestartdate;
+    private Date effectiveenddate;
     private String email;
-    private String phone_number;
-    private String use_yn;
+    private String phonenumber;
+    private String useyn;
     private String remarks;
-    private String created_by;
-    private Date creation_date;
-    private String last_updated_by;
-    private Date last_update_date;
+    private String createdby;
+    private Date creationdate;
+    private String lastupdatedby;
+    private Date lastupdatedate;
 
     public RegisterEmResDto(RegisterEm entity)
     {
-        this.org_id = entity.getOrg_id();
-        this.company_id = entity.getCompany_id();
-        this.employee_number =entity.getEmployee_number();
-        this.inspector_type = entity.getInspector_type();
-        this.kr_name = entity.getKr_name();
-        this.department_code = entity.getDepartment_code();
-        this.position_code = entity.getPosition_code();
-        this.upper_employee_number = entity.getUpper_employee_number();
-        this.leader_yn = entity.getLeader_yn();
-        this.effective_start_date = entity.getEffective_start_date();
-        this.effective_end_date = entity.getEffective_end_date();
+        this.orgid = entity.getOrgid();
+        this.companyid = entity.getCompanyid();
+        this.employeenumber =entity.getEmployeenumber();
+        this.inspectortype = entity.getInspectortype();
+        this.krname = entity.getKrname();
+        this.departmentcode = entity.getDepartmentcode();
+        this.positioncode = entity.getPositioncode();
+        this.upperemployeenumber = entity.getUpperemployeenumber();
+        this.leaderyn = entity.getLeaderyn();
+        this.effectivestartdate = entity.getEffectivestartdate();
+        this.effectiveenddate = entity.getEffectiveenddate();
         this.email = entity.getEmail();
-        this.phone_number = entity.getPhone_number();
-        this.use_yn = entity.getUse_yn();
+        this.phonenumber = entity.getPhonenumber();
+        this.useyn = entity.getUseyn();
         this.remarks = entity.getRemarks();
-        this.created_by = entity.getCreated_by();
-        this.creation_date = entity.getCreation_date();
-        this.last_update_date = entity.getLast_update_date();
-        this.last_updated_by = entity.getLast_updated_by();
+        this.createdby = entity.getCreatedby();
+        this.creationdate = entity.getCreationdate();
+        this.lastupdatedate = entity.getLastupdatedate();
+        this.lastupdatedby = entity.getLastupdatedby();
     }
 }

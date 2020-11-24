@@ -1,21 +1,21 @@
     <div class="search">
         <select name="cb_search" id="cb_search">
             <option value="">조건 검색</option>
-            <option value="사원 번호">사원 번호</option>
-            <option value="이름">이름</option>
-            <option value="직위">직위</option>
-            <option value="전화번호">전화번호</option>
+            <option value="employee_number">사원 번호</option>
+            <option value="name">사원명</option>
+            <option value="position">직위</option>
+            <option value="phonenumber">전화번호</option>
         </select>
-        <input type="search" name="" id="">
-        <button type="button">검색</button>
+        <input type="search" name="seacrchKeyword" id="seacrchKeyword">
+        <button type="button" id="btn_search">검색</button>
     </div>
-    <div>
+    <div class="table_container">
         <table class="table" border="1">
             <thead>
             <tr>
-                <th>
-                    <input type="checkbox" name="employee_check" id="employee_check">
-                </th>
+<!--                <th>-->
+<!--                    <input type="checkbox" name="employee_check" id="employee_check">-->
+<!--                </th>-->
                 <th>
                     사원코드
                 </th>
@@ -30,20 +30,22 @@
             <tbody>
             {{#employeers}}
                 <tr>
-                    <td><input type="checkbox" name="employee_check" id="employee_check" value="{{employee_number}}"></td>
-                    <td><a href="/employee/{{employee_number}}"/>{{employee_number}}</td>
-                    <td><a href="/employee/{{employee_number}}"/>{{kr_name}}</td>
-                    <td>{{position_code}}</td>
+<!--                    <td><input type="checkbox" name="employee_check" id="employee_check_{{employeenumber}}" value="{{employeenumber}}"></td>-->
+                    <td><a href="/employee/{{employeenumber}}"/>{{employeenumber}}</td>
+                    <td><a href="/employee/{{employeenumber}}"/>{{krname}}</td>
+                    <td>{{positioncode}}</td>
                 </tr>
             {{/employeers}}
 
-            <tr>
-                <td>총 인원</td>
-                <td colspan="3">인원수 넣기</td>
-
-            </tr>
             </tbody>
 
         </table>
     </div>
-
+    <div class="cnt_container">
+        <div>
+            총 인원
+        </div>
+        <div>
+            {{cnt}} 명
+        </div>
+    </div>

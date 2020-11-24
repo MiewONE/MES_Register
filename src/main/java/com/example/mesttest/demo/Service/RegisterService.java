@@ -20,12 +20,12 @@ public class RegisterService {
     @Transactional
     public String save(RegisterEmDto dto)
     {
-        return rep.save(dto.toEntity()).getEmployee_number();
+        return rep.save(dto.toEntity()).getEmployeenumber();
     }
 
-    public RegisterEmResDto findByEmployee_number(String employeer_code)
+    public RegisterEmResDto findByEmployeenumber(String employeercode)
     {
-        RegisterEm entity = rep.findByEmployee_number(employeer_code);//.orElseThrow(()->new IllegalArgumentException("해당 사원은 존재하지 않습니다"+employeer_code));
+        RegisterEm entity = rep.findByEmployeenumberEquals(employeercode);//.orElseThrow(()->new IllegalArgumentException("해당 사원은 존재하지 않습니다"+employeercode));
         if(entity==null) return null;
         return new RegisterEmResDto(entity);
     }
@@ -37,36 +37,68 @@ public class RegisterService {
                 .collect(Collectors.toList());  // postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto 변환 -> List로 반환하는 메소드.
     }
 
-    public void delete(String employee_number)
+    public void delete(String employeenumber)
     {
-        RegisterEm entity = rep.findByEmployee_number(employee_number);
+        RegisterEm entity = rep.findByEmployeenumberEquals(employeenumber);
         rep.delete(entity);
     }
     @Transactional
-    public String update(String employee_number,RegisterEmDto reqDto)
+    public String update(String employeenumber,RegisterEmDto reqDto)
     {
-        RegisterEm em = rep.findByEmployee_number(employee_number);
+        RegisterEm em = rep.findByEmployeenumberEquals(employeenumber);
         em.update(
-                reqDto.getOrg_id(),
-                reqDto.getCompany_id(),
-                reqDto.getEmployee_number(),
-                reqDto.getInspector_type(),
-                reqDto.getKr_name(),
-                reqDto.getDepartment_code(),
-                reqDto.getPosition_code(),
-                reqDto.getUpper_employee_number(),
-                reqDto.getLeader_yn(),
-                reqDto.getEffective_start_date(),
-                reqDto.getEffective_end_date(),
+                reqDto.getOrgid(),
+                reqDto.getCompanyid(),
+                reqDto.getEmployeenumber(),
+                reqDto.getInspectortype(),
+                reqDto.getKrname(),
+                reqDto.getDepartmentcode(),
+                reqDto.getPositioncode(),
+                reqDto.getUpperemployeenumber(),
+                reqDto.getLeaderyn(),
+                reqDto.getEffectivestartdate(),
+                reqDto.getEffectiveenddate(),
                 reqDto.getEmail(),
-                reqDto.getPhone_number(),
-                reqDto.getUse_yn(),
+                reqDto.getPhonenumber(),
+                reqDto.getUseyn(),
                 reqDto.getRemarks(),
-                reqDto.getCreated_by(),
-                reqDto.getCreation_date(),
-                reqDto.getLast_updated_by(),
-                reqDto.getLast_update_date()
+                reqDto.getCreatedby(),
+                reqDto.getCreationdate(),
+                reqDto.getLastupdatedby(),
+                reqDto.getLastupdatedate()
         );
-        return employee_number;
+        return employeenumber;
     }
+
+    public List<RegisterEmResDto> Search(String title, String keyword)
+    {
+        switch(title)
+        {
+            case "name":
+                return rep.findByKrnameContains(keyword).stream()
+                        .map(RegisterEmResDto::new).collect(Collectors.toList());
+            case "employeernumber":
+                return rep.findByKrnameContains(keyword).stream()
+                        .map(RegisterEmResDto::new).collect(Collectors.toList());
+            case "position":
+                return rep.findByPositioncodeEquals(keyword).stream()
+                        .map(RegisterEmResDto::new).collect(Collectors.toList());
+            case "phonenumber":
+                return rep.findByPhonenumberContains(keyword).stream()
+                        .map(RegisterEmResDto::new).collect(Collectors.toList());
+            default:
+                return rep.findAll().stream().map(RegisterEmResDto::new).collect(Collectors.toList());
+
+        }
+//        return rep.findByPhonenumberContains(keyword).stream()
+//                .map(RegisterEmResDto::new)
+//                .collect(Collectors.toList());
+    }
+
+//    public List<RegisterEmResDto> Searchphonenumber(String keyword)
+//    {
+//        return rep.findRegisterEmByPhonenumberContains(keyword).stream()
+//                .map(RegisterEmResDto::new)
+//                .collect(Collectors.toList());
+//    }
 }

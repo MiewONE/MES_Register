@@ -14,97 +14,71 @@ import java.util.Date;
 @Entity
 @Table(name = "cb_humanresource_manager")
 public class RegisterEm {
-    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long org_id; // 사업장
-    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name="COMPANY_ID")
-    private Long company_id; // 공장
-    @Id
-    private String employee_number; // 사원번호
-    @Column(nullable = false,length = 20)
-    private String inspector_type; // 사원구분
-    @Column(length = 200)
-    private String kr_name;//사원명
-    @Column(nullable = false,length=20)
-    private String department_code;//부서코드
-    @Column(length=20)
-    private String position_code;//직위
-    @Column(length=20)
-    private String upper_employee_number;//상위자
-    @Column(nullable = false,length=1)
-    private String leader_yn;//부서장여부
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date effective_start_date;//입사일자
-    @Column(nullable=false)
-    @Temporal(TemporalType.DATE)
-    private Date effective_end_date;//퇴사일자
-    @Column(length=200)
-    private String email;//이메일
-    @Column(length = 20)
-    private String phone_number;//전화번호
-    @Column(nullable = false,length = 1)
-    private String use_yn;//사용유무
-    @Column(length = 200)
-    private String remarks;//비고
-    @Column(nullable = false,length=30)
-    private String created_by;//등록자
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date creation_date;//등록일자
-    @Column(nullable = false,length = 30)
-    private String last_updated_by;//수정자
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date last_update_date;//수정일자
+    @Id @Column(name="org_id") private Long orgid; // 사업장
+    @Id @Column(name="company_id") private Long companyid; // 공장
+    @Id @Column(name="employee_number") private String employeenumber; // 사원번호
+    @Column(name="inspector_type",nullable = false,length = 20) private String inspectortype; // 사원구분
+    @Column(name="kr_name",length = 200) private String krname;//사원명
+    @Column(name="department_code",nullable = false,length=20) private String departmentcode;//부서코드
+    @Column(name="position_code",length=20) private String positioncode;//직위
+    @Column(name="upper_employee_number",length=20) private String upperemployeenumber;//상위자
+    @Column(name="leader_yn",nullable = false,length=1) private String leaderyn;//부서장여부
+    @Column(name="effective_start_date",nullable = false) @Temporal(TemporalType.DATE) private Date effectivestartdate;//입사일자
+    @Column(name="effective_end_date",nullable=false) @Temporal(TemporalType.DATE) private Date effectiveenddate;//퇴사일자
+    @Column(name="email",length=200) private String email;//이메일 
+    @Column(name="phone_number",length = 20) private String phonenumber;//전화번호
+    @Column(name="use_yn",nullable = false,length = 1) private String useyn;//사용유무
+    @Column(name="remarks",length = 200) private String remarks;//비고
+    @Column(name="created_by",nullable = false,length=30) private String createdby;//등록자
+    @Column(name="creation_date",nullable = false) @Temporal(TemporalType.DATE) private Date creationdate;//등록일자
+    @Column(name="last_updated_by",nullable = false,length = 30) private String lastupdatedby;//수정자
+    @Column(name="last_update_date",nullable = false) @Temporal(TemporalType.DATE) private Date lastupdatedate;//수정일자
 
     @Builder
-    public RegisterEm(Long org_id, Long company_id, String employee_number, String inspector_type, String kr_name, String department_code, String position_code, String upper_employee_number, String leader_yn, Date effective_start_date, Date effective_end_date, String email, String phone_number, String use_yn, String remarks, String created_by, Date creation_date, String last_updated_by, Date last_update_date)
+    public RegisterEm(Long orgid, Long companyid, String employeenumber, String inspectortype, String krname, String departmentcode, String positioncode, String upperemployeenumber, String leaderyn, Date effectivestartdate, Date effectiveenddate, String email, String phonenumber, String useyn, String remarks, String createdby, Date creationdate, String lastupdatedby, Date lastupdatedate)
     {
-        this.org_id = org_id;
-        this.company_id = company_id;
-        this.employee_number = employee_number;
-        this.inspector_type = inspector_type;
-        this.kr_name = kr_name;
-        this.department_code = department_code;
-        this.position_code = position_code;
-        this.upper_employee_number = upper_employee_number;
-        this.leader_yn = leader_yn;
-        this.effective_start_date = effective_start_date;
-        this.effective_end_date = effective_end_date;
+        this.orgid = orgid;
+        this.companyid = companyid;
+        this.employeenumber = employeenumber;
+        this.inspectortype = inspectortype;
+        this.krname = krname;
+        this.departmentcode = departmentcode;
+        this.positioncode = positioncode;
+        this.upperemployeenumber = upperemployeenumber;
+        this.leaderyn = leaderyn;
+        this.effectivestartdate = effectivestartdate;
+        this.effectiveenddate = effectiveenddate;
         this.email = email;
-        this.phone_number = phone_number;
-        this.use_yn = use_yn;
+        this.phonenumber = phonenumber;
+        this.useyn = useyn;
         this.remarks = remarks;
-        this.created_by = created_by;
-        this.creation_date = creation_date;
-        this.last_updated_by=last_updated_by;
-        this.last_update_date = last_update_date;
+        this.createdby = createdby;
+        this.creationdate = creationdate;
+        this.lastupdatedby=lastupdatedby;
+        this.lastupdatedate = lastupdatedate;
     }
 
-    public void update(Long org_id, Long company_id, String employee_number, String inspector_type, String kr_name, String department_code, String position_code, String upper_employee_number, String leader_yn, Date effective_start_date, Date effective_end_date, String email, String phone_number, String use_yn, String remarks, String created_by, Date creation_date, String last_updated_by, Date last_update_date)
+    public void update(Long orgid, Long companyid, String employeenumber, String inspectortype, String krname, String departmentcode, String positioncode, String upperemployeenumber, String leaderyn, Date effectivestartdate, Date effectiveenddate, String email, String phonenumber, String useyn, String remarks, String createdby, Date creationdate, String lastupdatedby, Date lastupdatedate)
     {
-        this.org_id = org_id;
-        this.company_id = company_id;
-        this.employee_number = employee_number;
-        this.inspector_type = inspector_type;
-        this.kr_name = kr_name;
-        this.department_code = department_code;
-        this.position_code = position_code;
-        this.upper_employee_number = upper_employee_number;
-        this.leader_yn = leader_yn;
-        this.effective_start_date = effective_start_date;
-        this.effective_end_date = effective_end_date;
+        this.orgid = orgid;
+        this.companyid = companyid;
+        this.employeenumber = employeenumber;
+        this.inspectortype = inspectortype;
+        this.krname = krname;
+        this.departmentcode = departmentcode;
+        this.positioncode = positioncode;
+        this.upperemployeenumber = upperemployeenumber;
+        this.leaderyn = leaderyn;
+        this.effectivestartdate = effectivestartdate;
+        this.effectiveenddate = effectiveenddate;
         this.email = email;
-        this.phone_number = phone_number;
-        this.use_yn = use_yn;
+        this.phonenumber = phonenumber;
+        this.useyn = useyn;
         this.remarks = remarks;
-        this.created_by = created_by;
-        this.creation_date = creation_date;
-        this.last_updated_by=last_updated_by;
-        this.last_update_date = last_update_date;
+        this.createdby = createdby;
+        this.creationdate = creationdate;
+        this.lastupdatedby=lastupdatedby;
+        this.lastupdatedate = lastupdatedate;
     }
 
 }

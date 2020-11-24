@@ -11,31 +11,35 @@ var index ={
         });
         $('#btn_delete').on('click',function ()
         {
-           _this.delete();
+            _this.delete();
+        });
+        $('#btn_search').on('click',function()
+        {
+            _this.search();
         });
     },
     save : function()
     {
         var data = {
-            org_id:$('#orgid').val(),
-            company_id:$('#companyid').val(),
-            employee_number:$('#employeenumber').val(),
-            inspector_type:$('#inspectortype').val(),
-            kr_name:$('#krname').val(),
-            department_code:$('#departmentcode').val(),
-            position_code:$('#positioncode').val(),
-            upper_employee_number:$('#upperemployeenumber').val(),
-            leader_yn:$('#leaderyn').val(),
-            effective_start_date:$('#effectivestartdate').val(),
-            effective_end_date:$('#effectiveenddate').val(),
+            orgid:$('#orgid').val(),
+            companyid:$('#companyid').val(),
+            employeenumber:$('#employeenumber').val(),
+            inspectortype:$('#inspectortype').val(),
+            krname:$('#krname').val(),
+            departmentcode:$('#departmentcode').val(),
+            positioncode:$('#positioncode').val(),
+            upperemployeenumber:$('#upperemployeenumber').val(),
+            leaderyn:$('#leaderyn').val(),
+            effectivestartdate:$('#effectivestartdate').val(),
+            effectiveenddate:$('#effectiveenddate').val(),
             email:$('#email').val(),
-            phone_number:$('#phonenumber').val(),
-            use_yn:$('#useyn').val(),
+            phonenumber:$('#phonenumber').val(),
+            useyn:$('#useyn').val(),
             remarks:$('#remarks').val(),
-            created_by:$('#createdby').val(),
-            creation_date:$('#creationdate').val(),
-            last_updated_by:$('#lastupdatedby').val(),
-            last_update_date:$('#lastupdatedate').val()
+            createdby:$('#createdby').val(),
+            creationdate:$('#creationdate').val(),
+            lastupdatedby:$('#lastupdatedby').val(),
+            lastupdatedate:$('#lastupdatedate').val()
         };
         $.ajax({
             type:'POST',
@@ -55,25 +59,25 @@ var index ={
     update : function()
     {
         var data = {
-            org_id:$('#orgid').val(),
-            company_id:$('#companyid').val(),
-            employee_number:$('#employeenumber').val(),
-            inspector_type:$('#inspectortype').val(),
-            kr_name:$('#krname').val(),
-            department_code:$('#departmentcode').val(),
-            position_code:$('#positioncode').val(),
-            upper_employee_number:$('#upperemployeenumber').val(),
-            leader_yn:$('#leaderyn').val(),
-            effective_start_date:$('#effectivestartdate').val(),
-            effective_end_date:$('#effectiveenddate').val(),
+            orgid:$('#orgid').val(),
+            companyid:$('#companyid').val(),
+            employeenumber:$('#employeenumber').val(),
+            inspectortype:$('#inspectortype').val(),
+            krname:$('#krname').val(),
+            departmentcode:$('#departmentcode').val(),
+            positioncode:$('#positioncode').val(),
+            upperemployeenumber:$('#upperemployeenumber').val(),
+            leaderyn:$('#leaderyn').val(),
+            effectivestartdate:$('#effectivestartdate').val(),
+            effectiveenddate:$('#effectiveenddate').val(),
             email:$('#email').val(),
-            phone_number:$('#phonenumber').val(),
-            use_yn:$('#useyn').val(),
+            phonenumber:$('#phonenumber').val(),
+            useyn:$('#useyn').val(),
             remarks:$('#remarks').val(),
-            created_by:$('#createdby').val(),
-            creation_date:$('#creationdate').val(),
-            last_updated_by:$('#lastupdatedby').val(),
-            last_update_date:$('#lastupdatedate').val()
+            createdby:$('#createdby').val(),
+            creationdate:$('#creationdate').val(),
+            lastupdatedby:$('#lastupdatedby').val(),
+            lastupdatedate:$('#lastupdatedate').val()
         };
         var employeenumber = $('#employeenumber').val();
         $.ajax({
@@ -108,6 +112,20 @@ var index ={
         {
             alert(JSON.stringify(error));
         })
+    },
+    search : function()
+    {
+        var title = $('#cb_search option:selected').val();
+        var keyword = $('#seacrchKeyword').val();
+
+        window.location.href='/employee/search?title='+title+'&keyword='+keyword;
     }
 };
 index.init();
+// function checkAll()
+// {
+//     if($('employee_check').is('check'))
+//     {
+//
+//     }
+// }

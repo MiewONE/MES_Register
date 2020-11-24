@@ -9,47 +9,47 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 public class EmployeeUpdateReqDto {
-    private Long org_id; // 사업장
-    private Long company_id; // 공장
-    private String employee_number; // 사원번호
-    private String inspector_type; // 사원구분
-    private String kr_name;
-    private String department_code;
-    private String position_code;
-    private String upper_employee_number;
-    private String leader_yn;
-    private Date effective_start_date;
-    private Date effective_end_date;
+    private Long orgid; // 사업장
+    private Long companyid; // 공장
+    private String employeenumber; // 사원번호
+    private String inspectortype; // 사원구분
+    private String krname;
+    private String departmentcode;
+    private String positioncode;
+    private String upperemployeenumber;
+    private String leaderyn;
+    private Date effectivestartdate;
+    private Date effectiveenddate;
     private String email;
-    private String phone_number;
-    private String use_yn;
+    private String phonenumber;
+    private String useyn;
     private String remarks;
-    private String created_by;
-    private Date creation_date;
-    private String last_updated_by;
-    private Date last_update_date;
+    private String createdby;
+    private Date creationdate;
+    private String lastupdatedby;
+    private Date lastupdatedate;
 
     @Builder
-    public EmployeeUpdateReqDto(Long org_id, Long company_id, String employee_number, String inspector_type, String kr_name, String department_code, String position_code, String upper_employee_number, String leader_yn, Date effective_start_date, Date effective_end_date, String email, String phone_number, String use_yn, String remarks, String created_by, Date creation_date, String last_updated_by, Date last_update_date)
+    public EmployeeUpdateReqDto(Long orgid, Long companyid, String employeenumber, String inspectortype, String krname, String departmentcode, String positioncode, String upperemployeenumber, String leaderyn, Date effectivestartdate, Date effectiveenddate, String email, String phonenumber, String useyn, String remarks, String createdby, Date creationdate, String lastupdatedby, Date lastupdatedate)
     {
-        this.org_id = org_id;
-        this.company_id = company_id;
-        this.employee_number = employee_number;
-        this.inspector_type = inspector_type;
-        this.kr_name = kr_name;
-        this.department_code = department_code;
-        this.position_code = position_code;
-        this.upper_employee_number = upper_employee_number;
-        this.leader_yn = leader_yn;
-        this.effective_start_date = effective_start_date;
-        this.effective_end_date = effective_end_date;
+        this.orgid = orgid;
+        this.companyid = companyid;
+        this.employeenumber = employeenumber;
+        this.inspectortype = inspectortype;
+        this.krname = krname;
+        this.departmentcode = departmentcode;
+        this.positioncode = positioncode;
+        this.upperemployeenumber = upperemployeenumber;
+        this.leaderyn = leaderyn;
+        this.effectivestartdate = effectivestartdate;
+        this.effectiveenddate = effectiveenddate;
         this.email = email;
-        this.phone_number = phone_number;
-        this.use_yn = use_yn;
+        this.phonenumber = phonenumber;
+        this.useyn = useyn;
         this.remarks = remarks;
-        this.created_by = created_by;
-        this.creation_date = creation_date;
-        this.last_updated_by=last_updated_by;
-        this.last_update_date = last_update_date;
+        this.createdby = createdby;
+        this.creationdate = creationdate;
+        this.lastupdatedby=lastupdatedby;
+        this.lastupdatedate = lastupdatedate;
     }
 }
