@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./test.css">
+    </head>
+    <body>
+        <div class="item_employee_table">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <input type="checkbox" name="tb_item_chbox" id="tb_item_chbox">
+                        <th>사원코드</th>
+                        <th>사원명</th>
+                        <th>직위</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- {{#employeers}} -->
+                    <tr>
+                        <input type="checkbox" name="tb_items_chbox" id="tb_items_chbox{{employee_number}}">
+                        <td><a href="/employee/{{employee_number}}"/>{{employee_number}}</td>
+                        <td><a href="/employee/{{employee_number}}"/>{{kr_name}}</td>
+                        <td>{{position_code}}</td>
+                    </tr>
+                    <!-- {{/employeers}} -->    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

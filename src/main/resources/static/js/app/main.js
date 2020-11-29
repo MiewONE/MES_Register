@@ -53,6 +53,7 @@ var index ={
             window.location.href='/';
         }).fail(function (error){
             alert(error.responseText);
+            window.location.href='/';
         })
 
     },
