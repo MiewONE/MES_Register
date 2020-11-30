@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -37,8 +36,8 @@ public class IndexController {
     {
         RegisterEmResDto dto = service.findByEmployeenumber(employee_number);
         model.addAttribute("employee",dto);
-        model.addAttribute("context","사원 수정");
-        return "main";
+        model.addAttribute("context","수정");
+        return "updateData";
 
     }
 //    @GetMapping("/employee/search/{search_title}&{search_keyword}")
@@ -49,17 +48,25 @@ public class IndexController {
     @GetMapping("/employee/search")//이름,직위,전화번호
     public String employeeSearch(@RequestParam String title , @RequestParam String keyword,Model model)
     {
-        List<RegisterEmResDto> ser = service.Search(title,keyword);
-        int cnt = ser.size();
-//        RegisterEmResDto dto = service.Search_phonenumber(keyword);
-        model.addAttribute("employeers",ser);
-        model.addAttribute("cnt",cnt);
+        switch (title)
+        {
+            case "employeenumber":
+                RegisterEmResDto ser = service.findByEmployeenumber(keyword);
+                model.addAttribute("employeers",ser);
+                break;
+            default:
+                List<RegisterEmResDto> sers = service.Search(title,keyword);
+                model.addAttribute("employeers",sers);
+                break;
+        }
+
+
         return "main";
     }
     @GetMapping("/employee/register")
     public String employeeRegister(Model model  )
     {
-        model.addAttribute("context","사원등록");
+        model.addAttribute("context","등록");
         return "inputData";
     }
 }

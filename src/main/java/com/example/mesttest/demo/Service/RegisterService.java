@@ -1,21 +1,20 @@
 package com.example.mesttest.demo.Service;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
-import com.example.mesttest.demo.Domain.RegisterEmRepository;
+import com.example.mesttest.demo.Domain.RegisterRepository;
 import com.example.mesttest.demo.Dto.RegisterEmDto;
 import com.example.mesttest.demo.Dto.RegisterEmResDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.lang.reflect.Member;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class RegisterService {
-    private final RegisterEmRepository rep;
+    private final RegisterRepository rep;
 
     @Transactional
     public String save(RegisterEmDto dto)
@@ -69,15 +68,11 @@ public class RegisterService {
         );
         return employeenumber;
     }
-
     public List<RegisterEmResDto> Search(String title, String keyword)
     {
         switch(title)
         {
             case "name":
-                return rep.findByKrnameContains(keyword).stream()
-                        .map(RegisterEmResDto::new).collect(Collectors.toList());
-            case "employeernumber":
                 return rep.findByKrnameContains(keyword).stream()
                         .map(RegisterEmResDto::new).collect(Collectors.toList());
             case "position":

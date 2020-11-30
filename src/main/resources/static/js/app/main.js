@@ -71,7 +71,7 @@ var index ={
         }).done(function()
         {
             alert('사원 수정이 완료되었습니다')
-            window.location.href='/employee/'+employeenumber;
+            window.location.href='/';
         }).fail(function (error){
             alert(JSON.stringify(error));
         })

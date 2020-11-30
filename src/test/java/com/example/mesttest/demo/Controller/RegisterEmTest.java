@@ -1,15 +1,13 @@
 package com.example.mesttest.demo.Controller;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
-import com.example.mesttest.demo.Domain.RegisterEmRepository;
+import com.example.mesttest.demo.Domain.RegisterRepository;
 import com.example.mesttest.demo.Dto.EmployeeUpdateReqDto;
 import com.example.mesttest.demo.Dto.RegisterEmDto;
-import com.example.mesttest.demo.Dto.RegisterEmResDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -37,7 +35,7 @@ public class RegisterEmTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private RegisterEmRepository rep;
+    private RegisterRepository rep;
 
     @After
     public void deldb() throws Exception

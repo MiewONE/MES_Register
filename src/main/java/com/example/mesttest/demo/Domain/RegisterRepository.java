@@ -7,7 +7,7 @@ import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Optional;
 
-public interface RegisterEmRepository extends JpaRepository<RegisterEm,String> {
+public interface RegisterRepository extends JpaRepository<RegisterEm,String> {
     @Query("SELECT R FROM RegisterEm R ORDER BY R.employeenumber DESC")
     List<RegisterEm> findAllDesc();
 
