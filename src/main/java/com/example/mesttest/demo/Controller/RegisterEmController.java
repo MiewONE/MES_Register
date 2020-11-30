@@ -9,6 +9,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RequiredArgsConstructor
 @RestController
 public class RegisterEmController {
@@ -33,11 +39,29 @@ public class RegisterEmController {
     {
         return service.update(employee_number,reqDto);
     }
-    @DeleteMapping("/api/delete/{employee_number}")
-    public String delete(@PathVariable String employee_number)
+    @DeleteMapping("/api/delete")
+    public String delete(@RequestBody List<Map<String,Object>> employees)
     {
-        service.delete(employee_number);
-        return employee_number;
+
+        List<String> employee_del = new ArrayList<String>();
+        for(Map<String,Object> em : employees)
+        {
+          for(String key:em.keySet())
+          {
+                employee_del.add(em.get(key).toString());
+          }
+        }
+        for(String ems : employee_del)
+        {
+            try{
+                service.delete(ems);
+            }catch (Exception e)
+            {
+                return "오류가 발생하여 취소되었습니다.";
+            }
+
+        }
+        return "";
     }
 //    @GetMapping("/api/search")//이름,직위,전화번호
 //    public String employeeSearch(@RequestParam String title , @RequestParam String keyword, Model model)

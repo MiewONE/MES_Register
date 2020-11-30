@@ -1,14 +1,37 @@
 {{>layout/header}}
 <div class="container">
-    <div class="item">
-        test
-    </div>
-    <div class="item">
-        {{>left_list}}
-    </div>
-    <div class="item">
-        {{>employee_detail}}
-    </div>
+    <div class="top">
+        <div>- 사원관리</div>
+        <div class="search">
+            <div class="search_item">
+                검색 구분
+            </div>
+            <div class="search_item">
+                <select name="cb_search" id="cb_search">
+                    <option value="">조건 검색</option>
+                    <option value="employee_number">사원 번호</option>
+                    <option value="name">사원명</option>
+                    <option value="position">직위</option>
+                    <option value="phonenumber">전화번호</option>
+                </select>
+                <!-- <input type="search" name="search_employee" id="search_employee">
+                <button type="button" id="btn_search">검색</button> -->
+            </div>
+            <div class="search_item">
+                검색 키워드
+            </div>
+            <div class="search_item">
+                <input type="search" name="seacrchKeyword" id="seacrchKeyword">
+            </div>
+            <div class="search_item">
+                <button type="button" id="btn_search">검색</button>
+            </div>
+        </div>
 
+    </div>
+    {{>layout/middle}}
+    <div class="bottom">
+        사업장,설비 연결 ( 나중에 추가)
+    </div>
 </div>
 {{>layout/footer}}

@@ -1,0 +1,65 @@
+<div class="middle">
+    <div class="container_btn">
+        <button type="button" class="btn" id="btn_save">추가</button>
+        <button type="button" class="btn" id="btn_update">수정</button>
+        <button type="button" class="btn" id="btn_delete">삭제</button>
+    </div>
+    <div class="container_table">
+        <table>
+            <thead>
+            <tr>
+                <th><input type="checkbox" name="check_employees" id="check_employees"></th>
+                <th>사업장</th>
+                <th>공장</th>
+                <th>사원번호</th>
+                <th>사원구분</th>
+                <th>사원명</th>
+                <th>부서코드</th>
+                <th>직위</th>
+                <th>상위자</th>
+                <th>부서장여부</th>
+                <th>입사 일정</th>
+                <th>퇴사 일정</th>
+                <th>이메일</th>
+                <th>전화번호</th>
+                <th>사용유무</th>
+                <th>비고</th>
+                <th>등록자</th>
+                <th>등록 일자</th>
+                <th>수정자</th>
+                <th>수정 일자</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#employeers}}
+                <tr>
+                    <!--<a href="/employee/{{employeenumber}}"/>-->
+                    <!-- <td><input type="checkbox" name="employee_check" id="employee_check_{{employeenumber}}" value="{{employeenumber}}"></td>-->
+                    <td><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></td>
+                    <td>{{orgid}}</td>
+                    <td>{{companyid}}</td>
+                    <td><a href="/employee/{{employeenumber}}"/>{{employeenumber}}</td>
+                    <td>{{inspectortype}}</td>
+                    <td><a href="/employee/{{employeenumber}}"/>{{krname}}</td>
+                    <td>{{departmentcode}}</td>
+                    <td>{{positioncode}}</td>
+                    <td>{{upperemployeenumber}}</td>
+                    <td>{{leaderyn}}</td>
+                    <td>{{effectivestartdate}}</td>
+                    <td>{{effectiveenddate}}</td>
+                    <td>{{email}}</td>
+                    <td>{{phonenumber}}</td>
+                    <td>{{useyn}}</td>
+                    <td>{{remarks}}</td>
+                    <td>{{createdby}}</td>
+                    <td>{{creationdate}}</td>
+                    <td>{{lastupdatedby}}</td>
+                    <td>{{lastupdatedate}}</td>
+
+                </tr>
+            {{/employeers}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

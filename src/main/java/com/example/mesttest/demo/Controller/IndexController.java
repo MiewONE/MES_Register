@@ -37,11 +37,8 @@ public class IndexController {
     {
         RegisterEmResDto dto = service.findByEmployeenumber(employee_number);
         model.addAttribute("employee",dto);
-        List<RegisterEmResDto> ser =service.findAllDesc();
-        int cnt = ser.size();
-        model.addAttribute("employeers",ser);
-        model.addAttribute("cnt",cnt);
-        return "update";
+        model.addAttribute("context","사원 수정");
+        return "main";
 
     }
 //    @GetMapping("/employee/search/{search_title}&{search_keyword}")
@@ -58,5 +55,11 @@ public class IndexController {
         model.addAttribute("employeers",ser);
         model.addAttribute("cnt",cnt);
         return "main";
+    }
+    @GetMapping("/employee/register")
+    public String employeeRegister(Model model  )
+    {
+        model.addAttribute("context","사원등록");
+        return "inputData";
     }
 }
