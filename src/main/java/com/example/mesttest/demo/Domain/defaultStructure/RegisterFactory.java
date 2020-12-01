@@ -15,6 +15,10 @@ import javax.persistence.Table;
 @Table(name="Factory")
 public class RegisterFactory {
     @Id @Column(name="factory") private String factory;
-    public RegisterFactory(String factory){this.factory=factory;}
-    @Builder public void factoryUpdate(String factory){this.factory=factory;}
+
+    @Builder
+    public RegisterFactory(String factory)
+    {
+        this.factory=factory;
+    }
 }

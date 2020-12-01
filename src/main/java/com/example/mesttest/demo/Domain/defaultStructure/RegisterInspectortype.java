@@ -17,7 +17,6 @@ public class RegisterInspectortype {
     @Id
     @Column
     private String inspectortype;
-    public RegisterInspectortype(String inspectortype){this.inspectortype = inspectortype;}
     @Builder
-    public void inspectortypeUpdate(String inspectortype){this.inspectortype = inspectortype;}
+    public RegisterInspectortype(String inspectortype){this.inspectortype = inspectortype;}
 }

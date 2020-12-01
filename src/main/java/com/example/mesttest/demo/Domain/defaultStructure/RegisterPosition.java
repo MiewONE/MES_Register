@@ -17,5 +17,4 @@ public class RegisterPosition {
     @Id @Column(name="position") private String position;
     @Builder
     public RegisterPosition(String position){this.position=position;}
-    public void Positionupdate(String position) {this.position=position;}
 }

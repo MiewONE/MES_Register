@@ -1,12 +1,13 @@
 package com.example.mesttest.demo.Dto;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
+
 import lombok.Getter;
 
 import java.util.Date;
 
 @Getter
-public class RegisterEmResDto {
+public class RegisterResDto {
     private Long orgid; // 사업장
     private Long companyid; // 공장
     private String employeenumber; // 사원번호
@@ -27,7 +28,12 @@ public class RegisterEmResDto {
     private String lastupdatedby;
     private Date lastupdatedate;
 
-    public RegisterEmResDto(RegisterEm entity)
+    private String ResFactory;
+    private String ResDepartmentcode;
+    private String ResPosition;
+    private String ResInspectortype;
+
+    public RegisterResDto(RegisterEm entity)
     {
         this.orgid = entity.getOrgid();
         this.companyid = entity.getCompanyid();
@@ -49,4 +55,22 @@ public class RegisterEmResDto {
         this.lastupdatedate = entity.getLastupdatedate();
         this.lastupdatedby = entity.getLastupdatedby();
     }
+
+//    public RegisterResDto(RegisterFactory entity)
+//    {
+//        this.ResFactory = entity.getFactory();
+//    }
+//    public RegisterResDto(RegisterPosition entity)
+//    {
+//        this.ResPosition= entity.getPosition();
+//    }
+//    public RegisterResDto(RegisterInspectortype entity)
+//    {
+//        this.ResInspectortype = entity.getInspectortype();
+//    }
+//    public RegisterResDto(RegisterDepartmentcode entity)
+//    {
+//        this.ResDepartmentcode = entity.getDepartmentcode();
+//    }
+
 }

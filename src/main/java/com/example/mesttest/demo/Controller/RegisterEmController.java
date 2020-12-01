@@ -1,8 +1,8 @@
 package com.example.mesttest.demo.Controller;
 
 
-import com.example.mesttest.demo.Dto.RegisterEmDto;
-import com.example.mesttest.demo.Dto.RegisterEmResDto;
+import com.example.mesttest.demo.Dto.RegisterDto;
+import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +16,11 @@ import java.util.Map;
 public class RegisterEmController {
     private final RegisterService service;
     @PostMapping("/api/register")
-    public String save(@RequestBody RegisterEmDto dto) {
+    public String save(@RequestBody RegisterDto dto) {
 
         String tmp = null;
         String tt =dto.getEmployeenumber();
-        RegisterEmResDto ts =service.findByEmployeenumber(tt);
+        RegisterResDto ts =service.findByEmployeenumber(tt);
         if(ts!=null) tmp = ts.getEmployeenumber();
         if(tt.equals(tmp) )
         {
@@ -31,7 +31,7 @@ public class RegisterEmController {
         }
     }
     @PutMapping("/api/update/{employee_number}")
-    public String update(@PathVariable String employee_number,@RequestBody RegisterEmDto reqDto)
+    public String update(@PathVariable String employee_number,@RequestBody RegisterDto reqDto)
     {
         return service.update(employee_number,reqDto);
     }

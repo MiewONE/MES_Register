@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
-public class RegisterEmDto {
+public class RegisterDto {
     private Long orgid; // 사업장
     private Long companyid; // 공장
     private String employeenumber; // 사원번호
@@ -34,8 +34,12 @@ public class RegisterEmDto {
     private String lastupdatedby;
     private Date lastupdatedate;
 
+    private String RegFactory;
+    private String RegPosition;
+    private String RegDepartmentcode;
+    private String RegInspectortype;
     @Builder
-    public RegisterEmDto(Long orgid, Long companyid, String employeenumber, String inspectortype, String krname, String departmentcode, String positioncode, String upperemployeenumber, String leaderyn, Date effectivestartdate, Date effectiveenddate, String email, String phonenumber, String useyn, String remarks, String createdby, Date creationdate, String lastupdatedby, Date lastupdatedate)
+    public RegisterDto(Long orgid, Long companyid, String employeenumber, String inspectortype, String krname, String departmentcode, String positioncode, String upperemployeenumber, String leaderyn, Date effectivestartdate, Date effectiveenddate, String email, String phonenumber, String useyn, String remarks, String createdby, Date creationdate, String lastupdatedby, Date lastupdatedate)
     {
         this.orgid = orgid;
         this.companyid = companyid;
@@ -57,7 +61,42 @@ public class RegisterEmDto {
         this.lastupdatedby=lastupdatedby;
         this.lastupdatedate = lastupdatedate;
     }
+    @Builder
+    public RegisterDto(String Regkeyword)
+    {
+        switch (Regkeyword)
+        {
+            case "Factory":
+                this.RegFactory=Regkeyword;
+                break;
+            case "Position":
+                this.RegPosition=Regkeyword;
+                break;
+            case "Departmentcode":
+                this.RegDepartmentcode=Regkeyword;
+                break;
+            case "Inspectortype":
+                this.RegInspectortype=Regkeyword;
+                break;
+        }
+    }
 
+//    public RegisterPosition toPositionEntity()
+//    {
+//        return RegisterPosition.builder().position(RegPosition).build();
+//    }
+//    public RegisterInspectortype toInspectortypeEntity()
+//    {
+//        return RegisterInspectortype.builder().inspectortype(RegInspectortype).build();
+//    }
+//    public RegisterDepartmentcode toDepartmentcodeEntity()
+//    {
+//        return RegisterDepartmentcode.builder().departmentcode(RegDepartmentcode).build();
+//    }
+//    public RegisterFactory toFactoryEntity()
+//    {
+//        return RegisterFactory.builder().factory(RegFactory).build();
+//    }
     public RegisterEm toEntity()
     {
         return RegisterEm.builder()

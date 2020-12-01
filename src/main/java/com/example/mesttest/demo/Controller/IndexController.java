@@ -1,7 +1,6 @@
 package com.example.mesttest.demo.Controller;
 
-import com.example.mesttest.demo.Dto.RegisterEmDto;
-import com.example.mesttest.demo.Dto.RegisterEmResDto;
+import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ public class IndexController {
     @GetMapping("/")
     public String Index(Model model)
     {
-        List<RegisterEmResDto> ser =service.findAllDesc();
+        List<RegisterResDto> ser =service.findAllDesc();
         int cnt = ser.size();
         model.addAttribute("employeers",ser);
         model.addAttribute("cnt",cnt);
@@ -34,7 +33,7 @@ public class IndexController {
     @GetMapping("/employee/{employee_number}")
     public String employeeUpdate(@PathVariable String employee_number,Model model)
     {
-        RegisterEmResDto dto = service.findByEmployeenumber(employee_number);
+        RegisterResDto dto = service.findByEmployeenumber(employee_number);
         model.addAttribute("employee",dto);
         model.addAttribute("context","수정");
         return "updateData";
@@ -51,11 +50,11 @@ public class IndexController {
         switch (title)
         {
             case "employeenumber":
-                RegisterEmResDto ser = service.findByEmployeenumber(keyword);
+                RegisterResDto ser = service.findByEmployeenumber(keyword);
                 model.addAttribute("employeers",ser);
                 break;
             default:
-                List<RegisterEmResDto> sers = service.Search(title,keyword);
+                List<RegisterResDto> sers = service.Search(title,keyword);
                 model.addAttribute("employeers",sers);
                 break;
         }

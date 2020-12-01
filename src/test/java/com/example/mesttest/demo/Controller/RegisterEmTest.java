@@ -3,7 +3,7 @@ package com.example.mesttest.demo.Controller;
 import com.example.mesttest.demo.Domain.RegisterEm;
 import com.example.mesttest.demo.Domain.RegisterRepository;
 import com.example.mesttest.demo.Dto.EmployeeUpdateReqDto;
-import com.example.mesttest.demo.Dto.RegisterEmDto;
+import com.example.mesttest.demo.Dto.RegisterDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,7 +48,7 @@ public class RegisterEmTest {
     {
 
         for(int i=8;i<100;i++) {
-            RegisterEmDto reqDto = RegisterEmDto.builder()
+            RegisterDto reqDto = RegisterDto.builder()
                     .orgid(6L)
                     .companyid(6L)
                     .employeenumber(i + "")

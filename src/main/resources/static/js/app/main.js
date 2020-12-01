@@ -2,6 +2,7 @@ var index ={
     init:function()
     {
         var _this =this;
+        var state = false;
         $('#btn_save').on('click',function(){
             _this.save();
         });
@@ -32,7 +33,56 @@ var index ={
             {
                 $("input[type=checkbox]").prop("checked",false);
             }
-        })
+        });
+        $('#btn_factory').on('click',function(){
+            $.ajax({
+                url:'/api/register/factory',
+                type:"GET",
+                contentType:"application/josn;charset=utf-8",
+                dataType:"json",
+            }).done(function(data){
+                var text = "<table><thead id='thd'></thead><tbody id='tbd'</tbody></table>";
+                $('#thd').append("<td>"+data[0]+"</td>");
+                for(var i=1;i<data.length;i++)
+                {
+                    $('#tbd').append("<td>"+data[i]+"</td>");
+                }
+            }).fail(function(error){
+                alert(error);
+            })
+        });
+        $('#btn_position').on('click',function(){
+            $.ajax({
+                url:'/api/register/position',
+                type:"GET",
+                contentType:"application/josn;charset=utf-8",
+                dataType:"json",
+            }).done(function(data){
+                if (!state) {
+                    var inputData = "<input type='text' name='inputDefault' id='inputDefault' style='width:172px;height:50px;'>";
+                    inputData += "<button class='btn' id='btn_inputposition' style='width:180px'>공장 입력</button>";
+                    var text = "<table style='width:180px;overflow-y:scroll;min-height: 100px;max-height: 500px;'>";
+                    text += "<thead id='thd'></thead><tbody id='tbd'</tbody></table>";
+                    $('#viewData').append(inputData);
+                    $('#viewData').append(text);
+                    $('#thd').append("<tr><th>직위</th></tr>");
+                    for (var i = 0; i < data.length; i++) {
+                        $('#tbd').append("<tr><td>" + data[i].position + "</td></tr>");
+                    }
+                    state = true;
+                } else {
+                    state = false;
+                    $('#viewData').empty();
+
+                }
+            }).fail(function(error){
+                alert(error);
+            })
+        });
+        $('#btn_inputposition').on('click',function()
+        {
+           _this.insertDefault();
+        });
     },
     save : function()
     {
@@ -163,6 +213,22 @@ var index ={
         }).fail(function (error){
             alert(error.responseText);
             window.location.href='/';
+        })
+    },
+    insertDefault : function()
+    {
+        var data = $('#inputDefault').val();
+        $.ajax({
+            type:'POST',
+            url:'/api/insertPosition',
+            dateType:'json',
+            contentType:'application/json;charset=utf-8',
+            data:data
+        }).done(function (msg){
+            alert(msg.responseText)
+            window.location.href='/';
+        }).fail(function (msg){
+            alert(JSON.stringify(msg));
         })
     }
 };

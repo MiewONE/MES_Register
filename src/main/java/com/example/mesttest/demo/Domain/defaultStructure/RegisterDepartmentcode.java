@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name="Departmentcode")
 public class RegisterDepartmentcode {
@@ -20,7 +19,7 @@ public class RegisterDepartmentcode {
     @Column
     private String departmentcode;
     @Builder
-    public void departmentcodeUpdate(String departmentcode)
+    public RegisterDepartmentcode(String departmentcode)
     {
         this.departmentcode = departmentcode;
     }
