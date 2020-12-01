@@ -1,6 +1,10 @@
 package com.example.mesttest.demo.Dto;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
+import com.example.mesttest.demo.Domain.defaultStructure.RegisterDepartmentcode;
+import com.example.mesttest.demo.Domain.defaultStructure.RegisterFactory;
+import com.example.mesttest.demo.Domain.defaultStructure.RegisterInspectortype;
+import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +39,7 @@ public class RegisterDto {
     private Date lastupdatedate;
 
     private String RegFactory;
-    private String RegPosition;
+
     private String RegDepartmentcode;
     private String RegInspectortype;
     @Builder
@@ -69,9 +73,7 @@ public class RegisterDto {
             case "Factory":
                 this.RegFactory=Regkeyword;
                 break;
-            case "Position":
-                this.RegPosition=Regkeyword;
-                break;
+
             case "Departmentcode":
                 this.RegDepartmentcode=Regkeyword;
                 break;
@@ -81,22 +83,19 @@ public class RegisterDto {
         }
     }
 
-//    public RegisterPosition toPositionEntity()
-//    {
-//        return RegisterPosition.builder().position(RegPosition).build();
-//    }
-//    public RegisterInspectortype toInspectortypeEntity()
-//    {
-//        return RegisterInspectortype.builder().inspectortype(RegInspectortype).build();
-//    }
-//    public RegisterDepartmentcode toDepartmentcodeEntity()
-//    {
-//        return RegisterDepartmentcode.builder().departmentcode(RegDepartmentcode).build();
-//    }
-//    public RegisterFactory toFactoryEntity()
-//    {
-//        return RegisterFactory.builder().factory(RegFactory).build();
-//    }
+
+    public RegisterInspectortype toInspectortypeEntity()
+    {
+        return RegisterInspectortype.builder().inspectortype(RegInspectortype).build();
+    }
+    public RegisterDepartmentcode toDepartmentcodeEntity()
+    {
+        return RegisterDepartmentcode.builder().departmentcode(RegDepartmentcode).build();
+    }
+    public RegisterFactory toFactoryEntity()
+    {
+        return RegisterFactory.builder().factory(RegFactory).build();
+    }
     public RegisterEm toEntity()
     {
         return RegisterEm.builder()

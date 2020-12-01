@@ -29,11 +29,10 @@ public class RegisterDefaultStructureController {
     {
         return service.View();
     }
-    @PostMapping("/api/register/insertPosition")
+    @PostMapping("/api/register/insertposition")
     public String insertPosition(@RequestBody RegisterPosition dto)
     {
-        service.Insert(dto);
-        return "success";
+        return service.Insert(dto);
     }
 //    @GetMapping("/api/register/departmentcode")
 //    public List<RegisterResDto> viewPosition(Model model)

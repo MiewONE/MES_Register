@@ -1,9 +1,12 @@
 package com.example.mesttest.demo.Controller;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
+import com.example.mesttest.demo.Domain.RegisterPositionRepository;
 import com.example.mesttest.demo.Domain.RegisterRepository;
+import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import com.example.mesttest.demo.Dto.EmployeeUpdateReqDto;
 import com.example.mesttest.demo.Dto.RegisterDto;
+import com.example.mesttest.demo.Dto.RegisterPositionDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,9 +37,11 @@ public class RegisterEmTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+
     @Autowired
     private RegisterRepository rep;
-
+    @Autowired
+    private RegisterPositionRepository Positionrep;
     @After
     public void deldb() throws Exception
     {
@@ -148,5 +153,23 @@ public class RegisterEmTest {
         System.out.println("findphonenumber"+test);
 //        assertThat(test.get(0)).isEqualTo()
     }
+    @Test
+    public void InsertPosition()
+    {
+        String text = "회장";
 
+        //RegisterDto reqDto
+        RegisterPositionDto entity = RegisterPositionDto.builder().position(text).build();
+
+        ///api/register/insertPosition
+        //String url = "http://localhost:" + port + "/api/register";
+        String url = "http://localhost:" + port + "/api/register/insertposition";
+
+        ResponseEntity<String> resEntity = restTemplate.postForEntity(url, entity, String.class);
+
+        assertThat(resEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
+        List<RegisterPosition> all = Positionrep.findAll();
+        assertThat(all.get(0).getPosition()).isEqualTo(text);
+//        List<String> tests = Positionrep.save(entity);
+    }
 }

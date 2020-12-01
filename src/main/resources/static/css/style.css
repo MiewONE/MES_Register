@@ -126,4 +126,5 @@ tbody tr:nth-child(even){
     flex-direction: column;
     justify-content: center;
     /* background-color: lightsalmon; */
+    overflow-y:scroll;min-height:100px;max-height:500px;
 }

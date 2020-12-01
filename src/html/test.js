@@ -35,24 +35,25 @@ var index = {
 
         $('#btn_factory').on('click', function () {
             if (!state) {
-                var data = ["1", "2", "3", "사장"];
+                var data = ["1", "2", "3", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장", "사장"];
                 var inputData = "<input type='text' name='inputDefault' id='inputDefault' style='width:172px;height:50px;'>";
                 inputData += "<button class='btn' id='btn_factorys' style='width:180px'>공장 입력</button>";
-                var text = "<table style='width:180px;overflow-y:scroll;min-height: 100px;max-height: 500px;'>";
+                var text = "<table id='DefaultTable' style='width:180px'>";
                 text += "<thead id='thd'></thead><tbody id='tbd'</tbody></table>";
+                text += "<script src='./innerTest.js'></script>";
                 $('#viewData').append(inputData);
                 $('#viewData').append(text);
+                $('#viewData').css('overflow-y','auto');
+                $('#viewData').css('zoom','1');
                 $('#thd').append("<tr><th>직위</th></tr>");
                 for (var i = 0; i < data.length; i++) {
                     $('#tbd').append("<tr><td>" + data[i] + "</td></tr>");
                 }
-                var script = "<script>$('#btn_factorys').on('click', function () {alert('hello');});</script>";
-                $('#viewData').append(script);
-
                 state = true;
             } else {
                 state = false;
                 $('#viewData').empty();
+                $('#viewData').css('overflow-y','hidden')
 
             }
 

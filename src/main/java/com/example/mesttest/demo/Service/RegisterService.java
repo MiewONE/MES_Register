@@ -92,9 +92,32 @@ public class RegisterService {
     {
         return positionRepository.findAll();
     }
-    public void Insert(RegisterPosition entity)
+    public String Insert(RegisterPosition entity)
     {
-        positionRepository.save(entity);
+        boolean pass = false;
+        List<RegisterPosition> tt = positionRepository.findAll();
+        for(RegisterPosition check : tt)
+        {
+            if(check.getPosition().equals(entity.getPosition()) )
+            {
+                pass= false;
+                break;
+            }
+            else
+            {
+                pass=true;
+            }
+
+        }
+        if(pass)
+        {
+            positionRepository.save(entity);
+            return "성공 : 등록 성공";
+        }else
+            return "실패 : 이미 등록 되어있습니다.";
+
+
+
     }
 
 

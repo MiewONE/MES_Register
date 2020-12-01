@@ -60,29 +60,30 @@ var index ={
             }).done(function(data){
                 if (!state) {
                     var inputData = "<input type='text' name='inputDefault' id='inputDefault' style='width:172px;height:50px;'>";
-                    inputData += "<button class='btn' id='btn_inputposition' style='width:180px'>공장 입력</button>";
+                    inputData += "<button class='btn' id='btn_positions' style='width:180px'>등록</button>";
+                    inputData += "<button class='btn' id='btn_positions_del' style='width:180px'>삭제</button>";
                     var text = "<table style='width:180px;overflow-y:scroll;min-height: 100px;max-height: 500px;'>";
                     text += "<thead id='thd'></thead><tbody id='tbd'</tbody></table>";
+                    text += "<script src='/js/app/assist.js'></script>";
                     $('#viewData').append(inputData);
                     $('#viewData').append(text);
                     $('#thd').append("<tr><th>직위</th></tr>");
                     for (var i = 0; i < data.length; i++) {
                         $('#tbd').append("<tr><td>" + data[i].position + "</td></tr>");
                     }
+
                     state = true;
                 } else {
                     state = false;
                     $('#viewData').empty();
 
                 }
+
             }).fail(function(error){
-                alert(error);
+                alert('fail'+error);
             })
         });
-        $('#btn_inputposition').on('click',function()
-        {
-           _this.insertDefault();
-        });
+
     },
     save : function()
     {
@@ -215,21 +216,5 @@ var index ={
             window.location.href='/';
         })
     },
-    insertDefault : function()
-    {
-        var data = $('#inputDefault').val();
-        $.ajax({
-            type:'POST',
-            url:'/api/insertPosition',
-            dateType:'json',
-            contentType:'application/json;charset=utf-8',
-            data:data
-        }).done(function (msg){
-            alert(msg.responseText)
-            window.location.href='/';
-        }).fail(function (msg){
-            alert(JSON.stringify(msg));
-        })
-    }
 };
 index.init();
