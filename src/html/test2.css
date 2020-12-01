@@ -1,6 +1,10 @@
 html,head,body{
     height: 100%;
-    width: 99%;
+    width: 99.2%;
+}
+.title{
+    font-size: 2em;
+    margin: 5px;
 }
 .container{
     display: flex;
@@ -34,16 +38,35 @@ html,head,body{
 #cb_search{
     width: 98%;
 }
-#search_employee{
+#seacrchKeyword{
     width: 90%;
 }
 .container_btn{
     margin-top: 1%;
     border-top: rgb(182, 174, 174) 1px solid;
+    padding: 5px;
 }
+.container_btn .btn{
+    width: 9%;
+    font-size: 1.1em;
+}
+
 
 table{
     border:1px solid;
     width: 100%;
     border-collapse: collapse;
+    text-align:center;
+}
+th,td{
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+tbody{
+    overflow-y:scroll;
+    height: 500px;
+}
+tbody tr:nth-child(even){
+  background-color: lightgoldenrodyellow;
 }

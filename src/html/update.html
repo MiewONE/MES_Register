@@ -14,97 +14,87 @@
                     <img src="" alt="test">
                     <input type="image" src="" alt="이미지등록">
                 </div> -->
-                <div class="inputDefault">
-                    <p>기본구조 입력</p>
-                    <button class="btn" id="btn_factory">공장</button>
-                    <button class="btn" id="btn_position">직위</button>
-                    <button class="btn" id="btn_departmentcode">부서코드</button>
-                    <button class="btn" id="btn_inspectortype">사원구분</button>
-                </div>
-                <div id="viewData">
-                </div>
                 <div class="input_container">
                     <div class="inputform">
                         <label for="orgid">사업장</label>
-                        <input type="text" id="orgid" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                        <input type="text" id="orgid" value="{{employee.orgid}}" disabled/>
                     </div>
                     <div class="inputform">
                         <label for="companyid">공장</label>
-                        <input type="text" id="companyid" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+                        <input type="text" id="companyid" value="{{employee.companyid}}" disabled/>
                     </div>
                     <div class="inputform">
-                        <label for="employeenumber">사원 번호</label>
-                        <input type="text" id="employeenumber" value=""/>
+                        <label for="employeenumber">사원번호</label>
+                        <input type="text" id="employeenumber" value="{{employee.employeenumber}}" disabled/>
                     </div>
                     <div class="inputform">
                         <label for="inspectortype">사원구분</label>
-                        <input type="text" required maxlength="20" id="inspectortype"/>
+                        <input type="text" required maxlength="20" id="inspectortype" value="{{employee.inspectortype}}"/>
                     </div>
                     <div class="inputform">
                         <label for="krname">사원명</label>
-                        <input type="text" required maxlength="200" id="krname"/>
+                        <input type="text" required maxlength="200" id="krname" value="{{employee.krname}}"/>
                     </div>
                     <div class="inputform">
                         <label for="departmentcode">부서코드</label>
-                        <input type="text" required maxlength="20" id="departmentcode"/>
+                        <input type="text" required maxlength="20" id="departmentcode" value="{{employee.departmentcode}}"/>
                     </div>
                     <div class="inputform">
                         <label for="positioncode">직위</label>
-                        <input type="text" id="positioncode" required maxlength="20"/>
+                        <input type="text" id="positioncode" required maxlength="20" value="{{employee.positioncode}}"/>
                     </div>
                     <div class="inputform">
                         <label for="upperemployeenumber">상위자</label>
-                        <input type="text" id="upperemployeenumber" required maxlength="20"/>
+                        <input type="text" id="upperemployeenumber" required maxlength="20" value="{{employee.positioncode}}"/>
                     </div>
                     <div class="inputform">
                         <label for="leaderyn">부서장여부</label>
-                        <input type="text" id="leaderyn"maxlength="1"/>
+                        <input type="text" id="leaderyn" value="{{employee.leaderyn}}"/>
                     </div>
                     <div class="inputform">
                         <label for="effectivestartdate">입사일정</label>
-                        <input type="date" id="effectivestartdate"/>
+                        <input type="date" id="effectivestartdate" value="{{employee.effectivestartdate}}"/>
                     </div>
                     <div class="inputform">
                         <label for="effectiveenddate">퇴사일정</label>
-                        <input type="date" id="effectiveenddate"/>
+                        <input type="date" id="effectiveenddate" value="{{employee.effectiveenddate}}"/>
                     </div>
                     <div class="inputform">
                         <label for="email">이메일</label>
-                        <input type="email" id="email" required maxlength="200"/>
+                        <input type="email" id="email" required maxlength="200" value="{{employee.email}}"/>
                     </div>
                     <div class="inputform">
                         <label for="phonenumber">전화번호</label>
-                        <input type="text" id="phonenumber" required maxlength="20"/>
+                        <input type="text" id="phonenumber" required maxlength="20" value="{{employee.phonenumber}}"/>
                     </div>
                     <div class="inputform">
                         <label for="useyn">사용유무</label>
-                        <input type="text" id="useyn" maxlength="1"/>
+                        <input type="text" id="useyn" value="{{employee.useyn}}"/>
                     </div>
                     <div class="inputform">
                         <label for="remarks">비고</label>
-                        <input type="text" id="remarks" required maxlength="200"/>
+                        <input type="text" id="remarks" required maxlength="200" value="{{employee.remarks}}"/>
                     </div>
                     <div class="inputform">
                         <label for="createdby">등록자</label>
-                        <input type="text" id="createdby" required maxlength="30"/>
+                        <input type="text" id="createdby" required maxlength="30" value="{{employee.createdby}}"/>
                     </div>
                     <div class="inputform">
                         <label for="creationdate">등록 일자</label>
-                        <input type="date" id="creationdate" />
+                        <input type="date" id="creationdate" value="{{employee.creationdate}}"/>
                     </div>
                     <div class="inputform">
                         <label for="lastupdatedby">수정자</label>
-                        <input type="text" id="lastupdatedby" required maxlength="30"/>
+                        <input type="text" id="lastupdatedby" required maxlength="30" value="{{employee.lastupdatedby}}"/>
                     </div>
                     <div class="inputform">
                         <label for="lastupdatedate">수정 일자</label>
-                        <input type="date" id="lastupdatedate"/>
+                        <input type="date" id="lastupdatedate" value="{{employee.lastupdatedate}}"/>
                     </div>
                 </div>
             </div>
             
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="./test.js"></script>
+        
     </body>
 </html>

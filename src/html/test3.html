@@ -2,11 +2,12 @@
 <html>
     <head>
         <link rel="stylesheet" href="./test2.css">
+        
     </head>
     <body>
         <div class="container">
             <div class="top">
-                <div>- 사원관리</div>
+                <div class="title">- 사원관리</div>
                 <div class="search"> 
                     <div class="search_item">
                         검색 구분
@@ -26,7 +27,7 @@
                         검색 키워드
                     </div>
                     <div class="search_item">
-                        <input type="search" name="search_employee" id="search_employee">
+                        <input type="search" name="seacrchKeyword" id="seacrchKeyword">
                     </div>
                     <div class="search_item">
                         <button type="button" id="btn_search">검색</button>
@@ -36,18 +37,18 @@
             </div>
             <div class="middle">
                 <div class="container_btn">
-                    <button type="button" class="btn btn-secondary" id="btn_save">추가</button>
-                    <button type="button" class="btn btn-secondary" id="btn_delete">삭제</button>
-                    <button type="button" class="btn btn-secondary" id="btn_update">수정</button>
+                    <button type="button" class="btn" id="btn_save">추가</button>
+                    <button type="button" class="btn" id="btn_delete">삭제</button>
+                    <button type="button" class="btn" id="btn_update">수정</button>
                 </div>
                 <div class="container_table">
                     <table>
                         <thead>
                             <tr>
+                                <th><input type="checkbox" name="check_employees" id="check_employees"></th>
                                 <th>사업장</th>
                                 <th>공장</th>
                                 <th>사원번호</th>
-                                <th>이름</th>
                                 <th>사원구분</th>
                                 <th>사원명</th>
                                 <th>부서코드</th>
@@ -67,7 +68,116 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            <tr>
+                                <th><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></th>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>010</td>
+                                <td>박원균</td>
+                                <td>001</td>
+                                <td>대리</td>
+                                <td>박사장</td>
+                                <td>Y</td>
+                                <td>2019-03-11</td>
+                                <td>2019-03-11</td>
+                                <td>dlsrk489@gmail.com</td>
+                                <td>010-2856-4723</td>
+                                <td>Y</td>
+                                <td></td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                            </tr>
+                            <tr>
+                                <th><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></th>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>010</td>
+                                <td>박원균</td>
+                                <td>001</td>
+                                <td>대리</td>
+                                <td>박사장</td>
+                                <td>Y</td>
+                                <td>2019-03-11</td>
+                                <td>2019-03-11</td>
+                                <td>dlsrk489@gmail.com</td>
+                                <td>010-2856-4723</td>
+                                <td>Y</td>
+                                <td></td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                            </tr>
+                            <tr>
+                                <th><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></th>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>010</td>
+                                <td>박원균</td>
+                                <td>001</td>
+                                <td>대리</td>
+                                <td>박사장</td>
+                                <td>Y</td>
+                                <td>2019-03-11</td>
+                                <td>2019-03-11</td>
+                                <td>dlsrk489@gmail.com</td>
+                                <td>010-2856-4723</td>
+                                <td>Y</td>
+                                <td></td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                            </tr>
+                            <tr>
+                                <th><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></th>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>010</td>
+                                <td>박원균</td>
+                                <td>001</td>
+                                <td>대리</td>
+                                <td>박사장</td>
+                                <td>Y</td>
+                                <td>2019-03-11</td>
+                                <td>2019-03-11</td>
+                                <td>dlsrk489@gmail.com</td>
+                                <td>010-2856-4723</td>
+                                <td>Y</td>
+                                <td></td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                            </tr>
+                            <tr>
+                                <th><input type="checkbox" name="check_employee" id="check_item" value="{{employeenumber}}"></th>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>001</td>
+                                <td>010</td>
+                                <td>박원균</td>
+                                <td>001</td>
+                                <td>대리</td>
+                                <td>박사장</td>
+                                <td>Y</td>
+                                <td>2019-03-11</td>
+                                <td>2019-03-11</td>
+                                <td>dlsrk489@gmail.com</td>
+                                <td>010-2856-4723</td>
+                                <td>Y</td>
+                                <td></td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                                <td>박원균</td>
+                                <td>2019-03-11</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -77,5 +187,20 @@
                 사업장,설비 연결 ( 나중에 추가)
             </div>
         </div>
+        <div id="layer1" class="pop-layer">
+            <div class="pop-container">
+                <div class="pop-conts">
+                    <!--content //-->
+                    <p class="ctxt mb20">Thank you.<br>
+                        Your registration was submitted successfully.<br>
+                        Selected invitees will be notified by e-mail on JANUARY 24th.<br><br>
+                        Hope to see you soon!
+                    </p>
+                    <!--// content-->
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="./com.js"></script>
     </body>
 </html>

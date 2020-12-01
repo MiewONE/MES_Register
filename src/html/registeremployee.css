@@ -1,0 +1,129 @@
+html,head,body{
+    height: 100%;
+    width: 99.2%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+.search{
+    display:flex;
+    justify-content: center;
+    border-top: rgb(182, 174, 174) 1px solid;
+    border-bottom: rgb(182, 174, 174) 1px solid;
+
+    /* width: 60%; */
+}
+.search_item:nth-child(1),
+.search_item:nth-child(3){
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgb(219, 207, 207);
+}
+.search_item:nth-child(2),
+.search_item:nth-child(4){
+    display: flex;
+    justify-content: center;
+    flex-grow: 1.4;
+}
+#cb_search{
+    width: 98%;
+}
+#seacrchKeyword{
+    width: 90%;
+}
+.container_btn{
+    margin-top: 1%;
+    border-top: rgb(182, 174, 174) 1px solid;
+    padding: 5px;
+}
+.container_btn .btn{
+    width: 9%;
+    font-size: 1.1em;
+}
+
+
+table{
+    border:1px solid;
+    width: 100%;
+    border-collapse: collapse;
+    text-align:center;
+}
+th{
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.container_table{
+    overflow-y:scroll;
+    min-height: 300px;
+    max-height: 500px;
+}
+
+.title{
+    font-size: 2em;
+    margin: 5px;
+}
+.input_title{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgb(182, 174, 174);
+    font-size: 3em;
+
+    font-weight: bold;
+    border-radius: 2ch;
+}
+#btn_register{
+    width: 10%;
+    border-radius: 5%;
+}
+.register_container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.data_container{
+    display:flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.input_container{
+    width: 80%;
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+.inputform{
+    margin : 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding: 5px;
+    margin-top: 5px;
+    max-height: 30px;
+}
+tbody tr:nth-child(even){
+    background-color: lightgoldenrodyellow;
+}
+.inputDefault{
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inputDefault .btn{
+    width: 80px;
+    margin: 5px;
+}
+#viewData{
+    display: flex;
+    /* width: 180px; */
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: lightsalmon; */
+}
