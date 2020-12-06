@@ -48,17 +48,17 @@ html,head,body{
 }
 
 
-table{
-    border:1px solid;
-    width: 100%;
-    border-collapse: collapse;
-    text-align:center;
-}
-th{
-    border: 1px solid;
-    font-weight: bold;
-    font-size: 1.1em;
-}
+/*table{*/
+/*    border:1px solid;*/
+/*    width: 100%;*/
+/*    border-collapse: collapse;*/
+/*    text-align:center;*/
+/*}*/
+/*th{*/
+/*    border: 1px solid;*/
+/*    font-weight: bold;*/
+/*    font-size: 1.1em;*/
+/*}*/
 .container_table{
     overflow-y:auto;
     min-height: 300px;
