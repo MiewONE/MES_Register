@@ -6,10 +6,7 @@ import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +29,14 @@ public class RegisterDefaultStructureController {
     @PostMapping("/api/register/insertposition")
     public String insertPosition(@RequestBody RegisterPosition dto)
     {
+        service.check(RegisterPosition.class);
         return service.Insert(dto);
+    }
+    @DeleteMapping("/api/register/deleteposition")
+    public String deletePosition(@RequestBody String keyword)
+    {
+        service.deleteDefault(keyword);
+        return "삭제 되었습니다.";
     }
 //    @GetMapping("/api/register/departmentcode")
 //    public List<RegisterResDto> viewPosition(Model model)

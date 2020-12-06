@@ -1,5 +1,6 @@
-package com.example.mesttest.demo.Domain;
+package com.example.mesttest.demo.Domain.Repository;
 
+import com.example.mesttest.demo.Domain.RegisterEm;
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

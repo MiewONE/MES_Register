@@ -1,5 +1,7 @@
 package com.example.mesttest.demo.Controller;
 
+import com.example.mesttest.demo.Domain.RegisterEm;
+import com.example.mesttest.demo.Dto.JqgridVo;
 import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -39,6 +42,11 @@ public class IndexController {
         return "updateData";
 
     }
+    @GetMapping("/error")
+    public String error()
+    {
+        return "error";
+    }
 //    @GetMapping("/employee/search/{search_title}&{search_keyword}")
 //        public String employeerSearch(@PathVariable String search_title,@PathVariable String search_keyword,Model model)
 //    {
@@ -68,4 +76,5 @@ public class IndexController {
         model.addAttribute("context","등록");
         return "inputData";
     }
+
 }

@@ -1,5 +1,5 @@
 html,head,body{
-    height: 100%;
+    height: auto;
     width: 99.2%;
 }
 .container{
@@ -90,24 +90,22 @@ th{
 }
 .data_container{
     display:flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 30px;
 }
 .input_container{
     width: 80%;
     display:grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     max-height: 100px;
 }
 .inputform{
-    margin : 5px;
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    padding: 5px;
-    margin-top: 5px;
-    max-height: 30px;
+    display: grid;
+    margin: 5px;
+    grid-template-columns:180px;
+    grid-template-rows: auto auto;
 }
+
 tbody tr:nth-child(even){
     background-color: lightgoldenrodyellow;
 }
@@ -116,6 +114,8 @@ tbody tr:nth-child(even){
     display: flex;
     flex-direction: column;
     align-items: center;
+    width:172px;
+    height:50px;
 }
 .inputDefault .btn{
     width: 80px;
@@ -123,10 +123,20 @@ tbody tr:nth-child(even){
 }
 #viewData{
     display: flex;
-    /* width: 180px; */
     flex-direction: column;
     justify-content: center;
-    /* background-color: lightsalmon; */
     ;min-height:100px;max-height:350px;
+    overflow-y : auto;
     
+}
+#DefaultTable{
+    min-width: 100px;
+    max-width: 180px;
+    min-height: 100px;
+}
+.btn_data{
+    width: 50%;
+}
+#btn_inputContainer{
+    display: flex;
 }

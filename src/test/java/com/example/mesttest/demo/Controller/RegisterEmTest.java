@@ -1,8 +1,8 @@
 package com.example.mesttest.demo.Controller;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
-import com.example.mesttest.demo.Domain.RegisterPositionRepository;
-import com.example.mesttest.demo.Domain.RegisterRepository;
+import com.example.mesttest.demo.Domain.Repository.RegisterPositionRepository;
+import com.example.mesttest.demo.Domain.Repository.RegisterRepository;
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import com.example.mesttest.demo.Dto.EmployeeUpdateReqDto;
 import com.example.mesttest.demo.Dto.RegisterDto;

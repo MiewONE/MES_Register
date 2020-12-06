@@ -28,11 +28,6 @@ public class RegisterResDto {
     private String lastupdatedby;
     private Date lastupdatedate;
 
-    private String ResFactory;
-    private String ResDepartmentcode;
-    private String ResPosition;
-    private String ResInspectortype;
-
     public RegisterResDto(RegisterEm entity)
     {
         this.orgid = entity.getOrgid();

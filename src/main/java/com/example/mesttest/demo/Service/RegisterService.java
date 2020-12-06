@@ -1,9 +1,8 @@
 package com.example.mesttest.demo.Service;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
-import com.example.mesttest.demo.Domain.RegisterPositionRepository;
-import com.example.mesttest.demo.Domain.RegisterRepository;
-import com.example.mesttest.demo.Domain.defaultStructure.RegisterFactory;
+import com.example.mesttest.demo.Domain.Repository.RegisterPositionRepository;
+import com.example.mesttest.demo.Domain.Repository.RegisterRepository;
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import com.example.mesttest.demo.Dto.RegisterDto;
 import com.example.mesttest.demo.Dto.RegisterResDto;
@@ -11,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -115,10 +115,45 @@ public class RegisterService {
             return "성공 : 등록 성공";
         }else
             return "실패 : 이미 등록 되어있습니다.";
-
-
-
     }
+    public void deleteDefault(String keyword)
+    {
+        RegisterPosition entity = positionRepository.findByPositionEquals(keyword);
+        positionRepository.delete(entity);
+    }
+    public void check(Class entity)
+    {
+        Field test[] = entity.getDeclaredFields();
+        for(Field ts : test)
+        {
+            ts.getName();
+        }
+    }
+//    private boolean check(Class entity,String keyword)
+//    {
+//        entity.get
+//        boolean pass = false;
+//        List<RegisterPosition> tt = positionRepository.findAll();
+//        for(RegisterPosition check : tt)
+//        {
+//            if(check.getPosition().equals(entity.getPosition()) )
+//            {
+//                pass= false;
+//                break;
+//            }
+//            else
+//            {
+//                pass=true;
+//            }
+//
+//        }
+//        if(pass)
+//        {
+//            positionRepository.save(entity);
+//            return "성공 : 등록 성공";
+//        }else
+//            return "실패 : 이미 등록 되어있습니다.";
+//    }
 
 
 }

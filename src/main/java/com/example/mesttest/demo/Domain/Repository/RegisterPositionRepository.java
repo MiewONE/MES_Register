@@ -1,4 +1,4 @@
-package com.example.mesttest.demo.Domain;
+package com.example.mesttest.demo.Domain.Repository;
 
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import org.springframework.data.jpa.repository.JpaRepository;

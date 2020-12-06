@@ -1,10 +1,13 @@
 package com.example.mesttest.demo.Controller;
 
 
+import com.example.mesttest.demo.Domain.RegisterEm;
+import com.example.mesttest.demo.Dto.JqgridVo;
 import com.example.mesttest.demo.Dto.RegisterDto;
 import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,11 +33,16 @@ public class RegisterEmController {
             return "사원번호 : "+service.save(dto)+",사원 이름 :"+dto.getKrname()+"인 사원 등록이 완료되었습니다";//'사원 등록이 완료되었습니다'+
         }
     }
-    @PutMapping("/api/update/{employee_number}")
-    public String update(@PathVariable String employee_number,@RequestBody RegisterDto reqDto)
+    @PutMapping("/api/update/{employeenumber}")
+    public String update(@PathVariable String employeenumber,@RequestBody RegisterDto reqDto)
     {
-        return service.update(employee_number,reqDto);
+        return service.update(employeenumber,reqDto);
     }
+//    @PostMapping("/api/update")
+//    public String update(@RequestParam String employeenumber,@RequestBody RegisterDto reqDto)
+//    {
+//        return service.update(employeenumber,reqDto);
+//    }
     @DeleteMapping("/api/delete")
     public String delete(@RequestBody List<Map<String,Object>> employees)
     {
@@ -58,6 +66,12 @@ public class RegisterEmController {
 
         }
         return "";
+    }
+    @GetMapping("/api/emolpyeeList")
+    public List<RegisterResDto> jqgridStart(@RequestParam String _search,@RequestParam String nd,@RequestParam String page,@RequestParam String sidx,@RequestParam String sord,@RequestParam String rows)
+    {
+        List<RegisterResDto> returnValue = service.findAllDesc();
+        return returnValue;
     }
 //    @GetMapping("/api/search")//이름,직위,전화번호
 //    public String employeeSearch(@RequestParam String title , @RequestParam String keyword, Model model)
