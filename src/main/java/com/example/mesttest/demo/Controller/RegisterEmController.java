@@ -65,13 +65,29 @@ public class RegisterEmController {
             }
 
         }
-        return "";
+        return "삭제 되었습니다.";
     }
     @GetMapping("/api/emolpyeeList")
     public List<RegisterResDto> jqgridStart(@RequestParam String _search,@RequestParam String nd,@RequestParam String page,@RequestParam String sidx,@RequestParam String sord,@RequestParam String rows)
     {
-        List<RegisterResDto> returnValue = service.findAllDesc();
-        return returnValue;
+//        List<RegisterResDto> list = new ArrayList<>();
+//        if(searchField!=null||searchField.length()>1)
+//        {
+//            switch (searchField)
+//            {
+//                case "employeenumber":
+//                    RegisterResDto ser = service.findByEmployeenumber(searchString);
+//                    list.add(ser);
+//                    return list;
+//                default:
+//                    return service.Search(searchField,searchString);
+//            }
+//        }else
+//        {
+            List<RegisterResDto> returnValue = service.findAllDesc();
+            return returnValue;
+//        }
+
     }
 //    @GetMapping("/api/search")//이름,직위,전화번호
 //    public String employeeSearch(@RequestParam String title , @RequestParam String keyword, Model model)

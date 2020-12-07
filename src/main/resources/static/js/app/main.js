@@ -1,5 +1,5 @@
 var lastsel;
-var rowId;
+var test='';
 var index ={
     init:function()
     {
@@ -310,77 +310,142 @@ var index ={
 };
 
 $(document).ready(function () {
-    var test;
     var cnames = ['사원번호','사업장', '공장',  '사원구분', '사원명', '부서코드', '직위', '상위자', '부서장여부', '입사 일정', '퇴사 일정', '이메일', '전화번호', '사용유무', '비고', '등록자', '등록 일자', '수정자', '수정일자'];
-    var test ="FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX";
-    $("#jqGrid").jqGrid({
-        url: "/api/emolpyeeList",
-        datatype: "json",
-        mtype:"GET",
-        colNames: cnames,
-        ajaxGridOptions: { contentType: "application/json; charset=UTF-8" },
-        ajaxRowOptions: { contentType: "application/json; charset=UTF-8", async: true },
-        ajaxSelectOptions: { contentType: "application/json; charset=UTF-8", dataType: "JSON" },
-        colModel: [
-            //{name:'checkbox',index:'checkbox',width: 50 ,align: "center"},
-            { name: 'employeenumber',key:true, index: 'employeenumber', width: 50 ,align: "center",editable:true},
-            { name: 'orgid', index: 'orgid', width: 50, align: "center",editable:true },
-            { name: 'companyid', index: 'companyid', width: 50, align: "center",editable:true },
-            { name: 'inspectortype', index: 'inspectortype', width: 50 ,align: "center",editable:true},
-            { name: 'krname', index: 'krname', width: 50,align: "center",editable:true },
-            { name: 'departmentcode', index: 'departmentcode', width: 50,align: "center",editable:true },
-            { name: 'positioncode', index: 'positioncode', width: 50,align: "center",editable:true,edittype:"select",editoptions:{value:test} },
-            { name: 'upperemployeenumber', index: 'upperemployeenumber', width: 50,align: "center",editable:true },
-            { name: 'leaderyn', index: 'leaderyn', width: 25,align: "center",editable:true },
-            { name: 'effectivestartdate', index: 'effectivestartdate', width: 50,align: "center",editable:true },
-            { name: 'effectiveenddate', index: 'effectiveenddate', width: 50 ,align: "center",editable:true},
-            { name: 'email', index: 'email', width: 50,align: "center",editable:true },
-            { name: 'phonenumber', index: 'phonenumber', width: 50,align: "center",editable:true },
-            { name: 'useyn', index: 'useyn', width: 25,align: "center",editable:true },
-            { name: 'remarks', index: 'remarks', width: 50 ,align: "center",editable:true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
-            { name: 'createdby', index: 'createdby', width: 50,align: "center",editable:true },
-            { name: 'creationdate', index: 'creationdate', width: 50 ,align: "center",editable:true},
-            { name: 'lastupdatedby', index: 'lastupdatedby', width: 50 ,align: "center",editable:true},
-            { name: 'lastupdatedate', index: 'lastupdatedate', width: 50 ,align: "center",editable:true},
-        ],
-        height: 480,
-        rowNum: 100,
-        rowList: [100, 200, 300],
-        pager: '#jqGridPager',
-        multiselect:true,
-        pagerpos:'center',
-        rownumbers: true,
-        autowidth: true,
-        onSelectRow: function (id) {
-            editparameters = {
-                "keys" : true,
-                "oneditfunc" : null,
-                "successfunc" : null,
-                "url" : '/api/update/'+id,
-                "extraparam" : {},
-                "aftersavefunc" : null,
-                "errorfunc": function(err){
-                    alert('변경할 수 없는 값 입니다.');
-                },
-                "afterrestorefunc" : null,
-                "restoreAfterError" : false,
-                "mtype" : "PUT"
+    // ="FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX";
+    $.ajax({
+        type:'GET',
+        url:'api/register/position',
+        dataType:'json',
+        contentType:'application/json;charset=utf-8',
+    }).done(function(data){
+        for(var i=0;i<data.length;i++)
+        {
+            if(test===''||test==="")
+            {
+                var tests = (data[i].position+':'+data[i].position+';').toString();
+                test = tests;
+            }else
+            {
+                test += (data[i].position+':'+data[i].position+';').toString();
             }
-            if (id && id !== lastsel) {
-                jQuery('#jqGrid').jqGrid('restoreRow', lastsel);
-                jQuery('#jqGrid').jqGrid('editRow',
-                    id,
-                    editparameters);
-                lastsel = id;
-            }
-        },
-        caption: "사원관리 그리드",
-        serializeRowData:function(data){
-            return JSON.stringify(data);
+
         }
+        $("#jqGrid").jqGrid({
+            url: "/api/emolpyeeList",
+            datatype: "json",
+            mtype:"GET",
+            colNames: cnames,
+            ajaxGridOptions: { contentType: "application/json; charset=UTF-8" },
+            ajaxRowOptions: { contentType: "application/json; charset=UTF-8", async: true },
+            ajaxSelectOptions: { contentType: "application/json; charset=UTF-8", dataType: "JSON" },
+            colModel: [
+                //{name:'checkbox',index:'checkbox',width: 50 ,align: "center"},
+                { name: 'employeenumber',key:true, index: 'employeenumber', width: 50 ,align: "center",editable:true},
+                { name: 'orgid', index: 'orgid', width: 50, align: "center",editable:true },
+                { name: 'companyid', index: 'companyid', width: 50, align: "center",editable:true },
+                { name: 'inspectortype', index: 'inspectortype', width: 50 ,align: "center",editable:true},
+                { name: 'krname', index: 'krname', width: 50,align: "center",editable:true },
+                { name: 'departmentcode', index: 'departmentcode', width: 50,align: "center",editable:true },
+                { name: 'positioncode', index: 'positioncode', width: 25,align: "center",editable:true,edittype:"select",editoptions:{value:test} },
+                { name: 'upperemployeenumber', index: 'upperemployeenumber', width: 50,align: "center",editable:true },
+                { name: 'leaderyn', index: 'leaderyn', width: 25,align: "center",editable:true,editoptions:{maxlength:"1"} },
+                { name: 'effectivestartdate', index: 'effectivestartdate', width: 50,align: "center",editable:true },
+                { name: 'effectiveenddate', index: 'effectiveenddate', width: 50 ,align: "center",editable:true},
+                { name: 'email', index: 'email', width: 50,align: "center",editable:true },
+                { name: 'phonenumber', index: 'phonenumber', width: 50,align: "center",editable:true },
+                { name: 'useyn', index: 'useyn', width: 25,align: "center",editable:true ,editoptions:{maxlength:"1"}},
+                { name: 'remarks', index: 'remarks', width: 50 ,align: "center",editable:true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
+                { name: 'createdby', index: 'createdby', width: 50,align: "center",editable:true },
+                { name: 'creationdate', index: 'creationdate', width: 50 ,align: "center",editable:true},
+                { name: 'lastupdatedby', index: 'lastupdatedby', width: 50 ,align: "center",editable:true},
+                { name: 'lastupdatedate', index: 'lastupdatedate', width: 50 ,align: "center",editable:true},
+            ],
+            height: 480,
+            rowNum: 100,
+            rowList: [100, 200, 300],
+            pager: '#jqGridPager',
+            multiselect:true,
+            pagerpos:'center',
+            rownumbers: true,
+            autowidth: true,
+            ondblClickRow:function(id){
+                editparameters = {
+                    "keys" : true,
+                    "oneditfunc" : null,
+                    "successfunc" : function(){
+                        alert('저장이 완료되었습니다.')
+                    },
+                    "url" : '/api/update/'+id,
+                    "extraparam" : {},
+                    "aftersavefunc" :null,
+                    "errorfunc": function(err){
+                        alert(err+'변경할 수 없는 값 입니다.');
+                    },
+                    "afterrestorefunc" : null,
+                    "restoreAfterError" : false,
+                    "mtype" : "PUT"
+                }
+                if (id && id !== lastsel) {
+                    jQuery('#jqGrid').jqGrid('restoreRow', lastsel);
+                    jQuery('#jqGrid').jqGrid('editRow',
+                        id,
+                        editparameters);
+                    lastsel = id;
+                }
+            },
+            caption: "사원관리 그리드",
+            editurl: '/api/register/',
+            serializeRowData:function(data){
+                return JSON.stringify(data);
+            }
+        });
+        jQuery("#jqGrid").jqGrid('navGrid',
+            "#jqGridPager",{
+            delfunc : function(id){
+                {
+                    var params =new Array();
+                    var idArray = $('#jqGrid').jqGrid('getDataIDs');
+                    for(var i=0;i<idArray.length;i++)
+                    {
+                        if($("input:checkbox[id='jqg_jqGrid_"+idArray[i]+"']").is(":checked"))
+                        {
+                            // var rowdata = $('#jqGrid').getRowData((idArray[i]));
+                            // params.push("employeenumber:"+idArray[i]);
+
+                            var obj = new Object();
+                            obj.employeenumber =idArray[i];
+                            params.push(obj);
+                        }
+                    }
+                    // alert(id);
+                    $.ajax({
+                        type:'DELETE',
+                        url:'/api/delete',
+                        dataType:'json',
+                        contentType:'application/json; charset=utf-8',
+                        data:JSON.stringify(params)
+                    }).done(function()
+                    {
+                        alert("삭제 완료되었습니다.");
+                        window.location.href='/';
+                    }).fail(function(error)
+                    {
+                        alert(error.responseText);
+                        window.location.href='/';
+                    })
+                }
+            }},
+            {edit:false,add:true,del:true},
+            {},
+            {},
+            {},
+            {});
+        // jQuery("#jqGrid").jqGrid('inlineNav',"#jqGridPager");
+    }).fail(function(err){
+        alert(JSON.stringify(err));
     });
-    jQuery("#jqGrid").jqGrid('navGrid',"#jqGridPager",{edit:false,add:true,del:false});
-    jQuery("#jqGrid").jqGrid('inlineNav',"#jqGridPager");
+
+
     // jQuery('#jqGrid').jqGrid('navGrid','#jqGridPager').jqGrid('navButtonAdd','#jqGridPager');
 });
 index.init();
