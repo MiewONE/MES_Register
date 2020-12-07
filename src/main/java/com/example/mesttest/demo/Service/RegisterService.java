@@ -70,7 +70,8 @@ public class RegisterService {
                 reqDto.getLastupdatedby(),
                 reqDto.getLastupdatedate()
         );
-        return employeenumber;
+        return rep.save(em).getEmployeenumber();
+
     }
     public List<RegisterResDto> Search(String title, String keyword) {
         switch (title) {

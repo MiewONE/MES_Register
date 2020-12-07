@@ -377,21 +377,17 @@ $(document).ready(function () {
                     },
                     "url" : '/api/update/'+id,
                     "extraparam" : {},
-                    "aftersavefunc" :null,
+                    "aftersavefunc" :function(){
+                        jQuery('#jqGrid').jqGrid('restoreRow', id);
+                    },
                     "errorfunc": function(err){
-                        alert(err+'변경할 수 없는 값 입니다.');
+                        alert('변경할 수 없는 값 입니다.');
                     },
                     "afterrestorefunc" : null,
                     "restoreAfterError" : false,
                     "mtype" : "PUT"
                 }
-                if (id && id !== lastsel) {
-                    jQuery('#jqGrid').jqGrid('restoreRow', lastsel);
-                    jQuery('#jqGrid').jqGrid('editRow',
-                        id,
-                        editparameters);
-                    lastsel = id;
-                }
+                jQuery('#jqGrid').jqGrid('editRow',id,editparameters);
             },
             caption: "사원관리 그리드",
             editurl: '/api/register/',
@@ -401,6 +397,7 @@ $(document).ready(function () {
         });
         jQuery("#jqGrid").jqGrid('navGrid',
             "#jqGridPager",{
+            edit:false,add:false,del:true,
             delfunc : function(id){
                 {
                     var params =new Array();
@@ -434,13 +431,8 @@ $(document).ready(function () {
                         window.location.href='/';
                     })
                 }
-            }},
-            {edit:false,add:true,del:true},
-            {},
-            {},
-            {},
-            {});
-        // jQuery("#jqGrid").jqGrid('inlineNav',"#jqGridPager");
+            }});
+        jQuery("#jqGrid").jqGrid('inlineNav',"#jqGridPager");
     }).fail(function(err){
         alert(JSON.stringify(err));
     });

@@ -34,9 +34,9 @@ public class RegisterEmController {
         }
     }
     @PutMapping("/api/update/{employeenumber}")
-    public String update(@PathVariable String employeenumber,@RequestBody RegisterDto reqDto)
+    public void update(@PathVariable String employeenumber,@RequestBody RegisterDto reqDto)
     {
-        return service.update(employeenumber,reqDto);
+        service.update(employeenumber,reqDto);
     }
 //    @PostMapping("/api/update")
 //    public String update(@RequestParam String employeenumber,@RequestBody RegisterDto reqDto)
