@@ -24,6 +24,9 @@ public interface RegisterRepository extends JpaRepository<RegisterEm,String> {
     List<RegisterEm> findByKrnameContains(String krname);
     List<RegisterEm> findByPhonenumberContains(String phonenumber);
     List<RegisterEm> findByPositioncodeEquals(String position);
+    List<RegisterEm> findByEmailContains(String email);
+    List<RegisterEm> findByRemarksContains(String remarks);
+
 //    List<RegisterEm> findRegisterEmByPhone_numberContains(String phone_number);
 
 }

@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,25 +70,28 @@ public class RegisterEmController {
         return "삭제 되었습니다.";
     }
     @GetMapping("/api/emolpyeeList")
-    public List<RegisterResDto> jqgridStart(@RequestParam String _search,@RequestParam String nd,@RequestParam String page,@RequestParam String sidx,@RequestParam String sord,@RequestParam String rows)
+    public List<RegisterResDto> jqgridStart(HttpServletRequest req)
     {
-//        List<RegisterResDto> list = new ArrayList<>();
-//        if(searchField!=null||searchField.length()>1)
-//        {
-//            switch (searchField)
-//            {
-//                case "employeenumber":
-//                    RegisterResDto ser = service.findByEmployeenumber(searchString);
-//                    list.add(ser);
-//                    return list;
-//                default:
-//                    return service.Search(searchField,searchString);
-//            }
-//        }else
-//        {
-            List<RegisterResDto> returnValue = service.findAllDesc();
-            return returnValue;
-//        }
+        String searchField = req.getParameter("searchField");
+        String searchString = req.getParameter("searchString");
+        if(searchField==null||searchString==null||searchString.equals("")) return service.findAllDesc();
+        List<RegisterResDto> list = new ArrayList<>();
+        if(searchField!=null||searchField.length()>1)
+        {
+            switch (searchField)
+            {
+                case "employeenumber":
+                    RegisterResDto ser = service.findByEmployeenumber(searchString);
+                    list.add(ser);
+                    return list;
+                default:
+                    return service.Search(searchField,searchString);
+            }
+        }else
+        {
+            return service.findAllDesc();
+
+        }
 
     }
 //    @GetMapping("/api/search")//이름,직위,전화번호
