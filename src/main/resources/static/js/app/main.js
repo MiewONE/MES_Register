@@ -1,32 +1,69 @@
 var lastsel;
 var test='';
+var state = false;
 var index ={
     init:function()
     {
         var _this =this;
-        var state = false;
+
         $('#btn_save').on('click',function(){
-            // _this.save();
-            jQuery('#jqGrid').jqGrid(
-                'addRow',
-            )
+            _this.save();
+            // jQuery('#jqGrid').jqGrid(
+            //     'addRow',
+            // )
         });
 
         $('#btn_update').on('click',function ()
         {
-            _this.update();
+            // _this.update();
+            jQuery('#jqGrid').jqGrid('editRow');
         });
         $('#btn_delete').on('click',function ()
         {
-            if(confirm("정말로 삭제를 진행하시겟습니까?")==true)
+            // if(confirm("정말로 삭제를 진행하시겟습니까?")==true)
+            // {
+            //     _this.delete();
+            // }
+            var params =new Array();
+            var idArray = $('#jqGrid').jqGrid('getDataIDs');
+            for(var i=0;i<idArray.length;i++)
             {
-                _this.delete();
+                if($("input:checkbox[id='jqg_jqGrid_"+idArray[i]+"']").is(":checked"))
+                {
+                    var obj = new Object();
+                    obj.employeenumber =idArray[i];
+                    params.push(obj);
+                }
             }
+            if(params.length <1) alert('삭제할 항목을 선택해주십시오');
+            else
+            {
+                $.ajax({
+                    type:'DELETE',
+                    url:'/api/delete',
+                    dataType:'json',
+                    contentType:'application/json; charset=utf-8',
+                    data:JSON.stringify(params)
+                }).done(function()
+                {
+                    alert("삭제 완료되었습니다.");
+                    window.location.href='/';
+                }).fail(function(error)
+                {
+                    alert(error.responseText);
+                    window.location.href='/';
+                })
+            }
+
+            // var gr = jQuery("#delgrid").jqGrid('getGridParam','selrow');
+            // if( gr != null ) jQuery("#delgrid").jqGrid('delGridRow',gr,{reloadAfterSubmit:false});
+            // else alert("Please Select Row to delete!");
 
         });
         $('#btn_search').on('click',function()
         {
-            _this.search();
+            jQuery("#jqGrid").jqGrid('searchGrid'
+            );
         });
         $('#btn_register').on('click',function(){
             _this.register();
@@ -174,7 +211,23 @@ var index ={
 
     save : function()
     {
-        window.location.href='/employee/register';
+        if(!state)
+        {
+            var script = "<div class='input_container'><div class='inputform'><label for='orgid'>사업장</label><input type='text' id='orgid'/></div><div class='inputform'><label for='companyid'>공장</label><input type='text' id='companyid'/></div><div class='inputform'><label for='employeenumber'>사원 번호</label><input type='text' id='employeenumber' value=''/></div><div class='inputform'><label for='inspectortype'>사원구분</label><input type='text' required maxlength='20' id='inspectortype'/></div><div class='inputform'><label for='krname'>사원명</label><input type='text' required maxlength='200' id='krname'/></div><div class='inputform'><label for='departmentcode'>부서코드</label><input type='text' required maxlength='20' id='departmentcode'/></div><div class='inputform'><label for='positioncode'>직위</label><input type='text' id='positioncode' required maxlength='20'/></div><div class='inputform'><label for='upperemployeenumber'>상위자</label><input type='text' id='upperemployeenumber' required maxlength='20'/></div>           <div class='inputform'><label for='leaderyn'>부서장여부</label><input type='text' id='leaderyn'maxlength='1'/></div>           <div class='inputform'><label for='effectivestartdate'>입사일정</label><input type='date' id='effectivestartdate'/></div>";
+            script +="<div class='inputform'><label for='effectiveenddate'>퇴사일정</label><input type='date' id='effectiveenddate'/></div><div class='inputform'><label for='email'>이메일</label><input type='email' id='email' required maxlength='200'/></div><div class='inputform'><label for='phonenumber'>전화번호</label><input type='text' id='phonenumber' required maxlength='20'/></div><div class='inputform'><label for='useyn'>사용유무</label><input type='text' id='useyn' maxlength='1'/></div><div class='inputform'><label for='remarks'>비고</label><input type='text' id='remarks' required maxlength='200'/></div><div class='inputform'><label for='createdby'>등록자</label><input type='text' id='createdby' required maxlength='30'/></div><div class='inputform'><label for='creationdate'>등록 일자</label><input type='date' id='creationdate' /></div><div class='inputform'><label for='lastupdatedby'>수정자</label><input type='text' id='lastupdatedby' required maxlength='30'/></div><div class='inputform'><label for='lastupdatedate'>수정 일자</label><input type='date' id='lastupdatedate'/></div>        </div>";
+            jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width()*5/7);
+            jQuery('#InsertZone').width($(window).width()*2/7);
+            jQuery('#InsertZone').append(script);
+            // jQuery('#InsertZone').css('background-color','green');
+            state = true;
+        } else {
+            state = false;
+            jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width());
+            $('#InsertZone').empty();
+        }
+
+
+        // window.location.href='/employee/register';
     },
     update : function()
     {
@@ -337,11 +390,16 @@ $(document).ready(function () {
 
     // jQuery('#jqGrid').jqGrid('navGrid','#jqGridPager').jqGrid('navButtonAdd','#jqGridPager');
 });
+function imageFormatter(cellvalue, options, rowObject)
+{
+
+    return '<img src="' + rowObject.test + '" />';
+}
 index.init();
 
 
 function searchData(url) {
-    var cnames = ['사원번호','사업장', '공장',  '사원구분', '사원명', '부서코드', '직위', '상위자', '부서장여부', '입사 일정', '퇴사 일정', '이메일', '전화번호', '사용유무', '비고', '등록자', '등록 일자', '수정자', '수정일자'];
+    var cnames = ['사원번호','사업장', '공장',  '사원구분', '사원명', '부서코드', '직위', '상위자', '부서장여부', '입사 일정', '퇴사 일정', '이메일', '전화번호', '사용유무', '비고', '등록자', '등록 일자', '수정자', '수정일자','test'];
     $("#jqGrid").jqGrid({
         url: url,
         datatype: "json",
@@ -371,16 +429,17 @@ function searchData(url) {
             { name: 'creationdate', index: 'creationdate', width: 50 ,align: "center",editable:true,search:false},
             { name: 'lastupdatedby', index: 'lastupdatedby', width: 50 ,align: "center",editable:true,search:false},
             { name: 'lastupdatedate', index: 'lastupdatedate', width: 50 ,align: "center",editable:true,search:false},
+            {name:'test',index:'test',width:50,align:"center",formatter:imageFormatter}
         ],
         height: 480,
         rowNum: 100,
         rowList: [100, 200, 300],
         pager: '#jqGridPager',
+        autowidth:true,
         multiselect:true,
         pagerpos:'center',
         sortable:true,
         rownumbers: true,
-        autowidth: true,
         ondblClickRow:function(id){
             editparameters = {
                 "keys" : true,
@@ -446,5 +505,6 @@ function searchData(url) {
                     })
                 }
             }});
-
+    jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width());
+    // jQuery("#jqGrid").jqGrid('gridResize',{minWidth:350,maxWidth:800,minHeight:80, maxHeight:350});
 }
