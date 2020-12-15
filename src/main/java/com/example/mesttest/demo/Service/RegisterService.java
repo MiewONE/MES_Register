@@ -76,14 +76,25 @@ public class RegisterService {
     public List<RegisterResDto> Search(String title, String keyword) {
         switch (title) {
             case "name":
-                return rep.findByKrnameContains(keyword).stream()
-                        .map(RegisterResDto::new).collect(Collectors.toList());
+                return rep.findByKrnameContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
             case "position":
-                return rep.findByPositioncodeEquals(keyword).stream()
-                        .map(RegisterResDto::new).collect(Collectors.toList());
+                return rep.findByPositioncodeEquals(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
             case "phonenumber":
-                return rep.findByPhonenumberContains(keyword).stream()
-                        .map(RegisterResDto::new).collect(Collectors.toList());
+                return rep.findByPhonenumberContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "orgid" :
+                return rep.findByOrgidContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "remark" :
+                return rep.findByRemarksContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "email" :
+                return rep.findByEmailContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "companyid" :
+                return rep.findByCompanyidContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "inspectortype" :
+                return rep.findByInspectortypeContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "departmentcode" :
+                return rep.findByDepartmentcodeContains(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
+            case "upperemployeenumber" :
+                return rep.findByUpperemployeenumber(keyword).stream().map(RegisterResDto::new).collect(Collectors.toList());
             default:
                 return rep.findAll().stream().map(RegisterResDto::new).collect(Collectors.toList());
 
