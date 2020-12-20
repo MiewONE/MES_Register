@@ -1,7 +1,6 @@
 package com.example.mesttest.demo.Controller;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
-import com.example.mesttest.demo.Dto.JqgridVo;
 import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;

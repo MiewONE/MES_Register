@@ -348,7 +348,6 @@ var index ={
 
 
 };
-
 $(document).ready(function () {
 
     // ="FE:FedEx;IN:InTime;TN:TNT;AR:ARAMEX";
@@ -435,10 +434,9 @@ function searchData(url) {
         rowNum: 100,
         rowList: [100, 200, 300],
         pager: '#jqGridPager',
-        autowidth:true,
+        width:$(window).width()-50,
         multiselect:true,
         pagerpos:'center',
-        sortable:true,
         rownumbers: true,
         ondblClickRow:function(id){
             editparameters = {
@@ -471,40 +469,40 @@ function searchData(url) {
             return JSON.stringify(data);
         }
     });
-    jQuery("#jqGrid").jqGrid('navGrid',
-        "#jqGridPager",{
-            edit:false,add:false,del:true,
-            delfunc : function(id){
-                {
-                    var params =new Array();
-                    var idArray = $('#jqGrid').jqGrid('getDataIDs');
-                    for(var i=0;i<idArray.length;i++)
-                    {
-                        if($("input:checkbox[id='jqg_jqGrid_"+idArray[i]+"']").is(":checked"))
-                        {
-                            var obj = new Object();
-                            obj.employeenumber =idArray[i];
-                            params.push(obj);
-                        }
-                    }
-                    // alert(id);
-                    $.ajax({
-                        type:'DELETE',
-                        url:'/api/delete',
-                        dataType:'json',
-                        contentType:'application/json; charset=utf-8',
-                        data:JSON.stringify(params)
-                    }).done(function()
-                    {
-                        alert("삭제 완료되었습니다.");
-                        window.location.href='/';
-                    }).fail(function(error)
-                    {
-                        alert(error.responseText);
-                        window.location.href='/';
-                    })
-                }
-            }});
-    jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width());
+    // jQuery("#jqGrid").jqGrid('navGrid',
+    //     "#jqGridPager",{
+    //         edit:false,add:false,del:true,
+    //         delfunc : function(id){
+    //             {
+    //                 var params =new Array();
+    //                 var idArray = $('#jqGrid').jqGrid('getDataIDs');
+    //                 for(var i=0;i<idArray.length;i++)
+    //                 {
+    //                     if($("input:checkbox[id='jqg_jqGrid_"+idArray[i]+"']").is(":checked"))
+    //                     {
+    //                         var obj = new Object();
+    //                         obj.employeenumber =idArray[i];
+    //                         params.push(obj);
+    //                     }
+    //                 }
+    //                 // alert(id);
+    //                 $.ajax({
+    //                     type:'DELETE',
+    //                     url:'/api/delete',
+    //                     dataType:'json',
+    //                     contentType:'application/json; charset=utf-8',
+    //                     data:JSON.stringify(params)
+    //                 }).done(function()
+    //                 {
+    //                     alert("삭제 완료되었습니다.");
+    //                     window.location.href='/';
+    //                 }).fail(function(error)
+    //                 {
+    //                     alert(error.responseText);
+    //                     window.location.href='/';
+    //                 })
+    //             }
+    //         }});
+    jQuery("#jqGrid").jqGrid('gridResize',{minWidth:350,maxWidth:$(window).width(),minHeight:80, maxHeight:$(window).height()});
     // jQuery("#jqGrid").jqGrid('gridResize',{minWidth:350,maxWidth:800,minHeight:80, maxHeight:350});
 }

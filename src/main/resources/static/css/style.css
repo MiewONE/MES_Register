@@ -103,9 +103,12 @@ html,head,body{
     display: grid;
     margin: 5px;
     grid-template-columns:auto 100px;
+    font-size: 0.7em;
     /*grid-template-rows: auto auto;*/
 }
-
+.inputform input{
+    max-height: 20px;
+}
 tbody tr:nth-child(even){
     background-color: lightgoldenrodyellow;
 }
@@ -142,4 +145,7 @@ tbody tr:nth-child(even){
 }
 #jqgRidZone{
     display:flex;
+}
+#InsertZone{
+    background-color : #c2bebe;
 }
