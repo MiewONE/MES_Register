@@ -430,7 +430,7 @@ function searchData(url) {
             { name: 'lastupdatedate', index: 'lastupdatedate', width: 50 ,align: "center",editable:true,search:false},
             {name:'test',index:'test',width:50,align:"center",formatter:imageFormatter}
         ],
-        height: 480,
+        height: 200,
         rowNum: 100,
         rowList: [100, 200, 300],
         pager: '#jqGridPager',

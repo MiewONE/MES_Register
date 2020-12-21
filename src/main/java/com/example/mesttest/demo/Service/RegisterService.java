@@ -1,9 +1,11 @@
 package com.example.mesttest.demo.Service;
 
 import com.example.mesttest.demo.Domain.RegisterEm;
+import com.example.mesttest.demo.Domain.Repository.MenuRepository;
 import com.example.mesttest.demo.Domain.Repository.RegisterPositionRepository;
 import com.example.mesttest.demo.Domain.Repository.RegisterRepository;
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
+import com.example.mesttest.demo.Dto.menu.MenuResDto;
 import com.example.mesttest.demo.Dto.RegisterDto;
 import com.example.mesttest.demo.Dto.RegisterResDto;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 public class RegisterService {
     private final RegisterRepository rep;
-
+    private final MenuRepository menuRep;
     private final RegisterPositionRepository positionRepository;
     @Transactional
     public String save(RegisterDto dto)
@@ -140,6 +142,10 @@ public class RegisterService {
         {
             ts.getName();
         }
+    }
+    public List<MenuResDto> getMenu()
+    {
+        return menuRep.findAll().stream().map(MenuResDto::new).collect(Collectors.toList());
     }
 //    private boolean check(Class entity,String keyword)
 //    {

@@ -8,29 +8,6 @@ html,head,body{
     justify-content: space-around;
 
 }
-.search{
-    display:flex;
-    justify-content: center;
-    border-top: rgb(182, 174, 174) 1px solid;
-    border-bottom: rgb(182, 174, 174) 1px solid;
-
-    /* width: 60%; */
-}
-.search_item:nth-child(1),
-.search_item:nth-child(3){
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    font-size: large;
-    font-weight: bold;
-    background-color: rgb(219, 207, 207);
-}
-.search_item:nth-child(2),
-.search_item:nth-child(4){
-    display: flex;
-    justify-content: center;
-    flex-grow: 1.4;
-}
 #cb_search{
     width: 98%;
 }
@@ -44,7 +21,7 @@ html,head,body{
 }
 .container_btn > button{
     width: 9%;
-    font-size: 1.1em;
+    font-size: 0.7em;
 }
 
 
@@ -148,4 +125,21 @@ tbody tr:nth-child(even){
 }
 #InsertZone{
     background-color : #c2bebe;
+    overflow-y:auto;
+    overflow-x : auto;
+}
+.mid{
+    display : flex;
+
+}
+.top,.menu
+{
+    display : flex;
+
+}
+.menu{
+    justify-content: space-between;
+}
+.logo{
+    font-size: 2em;
 }

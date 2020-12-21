@@ -1,6 +1,5 @@
 package com.example.mesttest.demo.Controller;
 
-import com.example.mesttest.demo.Domain.RegisterEm;
 import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Service.RegisterService;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -21,16 +19,17 @@ public class IndexController {
     @GetMapping("/")
     public String Index(Model model)
     {
-        List<RegisterResDto> ser =service.findAllDesc();
-        int cnt = ser.size();
-        model.addAttribute("employeers",ser);
-        model.addAttribute("cnt",cnt);
+        model.addAttribute("title","홈페이지");
+        //기본페이지에서 보여줄 서브타이틀들을 불러와야함
+        //디비에 넣어놨다가 가지고오는걸로 확장성가지게 하자.
+        model.addAttribute("nav",service.getMenu());
         return "main";
     }
-    @GetMapping("/employee")
-    public String employee(Model model)
+    @GetMapping("/system")
+    public String system(Model model)
     {
-        return "employee_detail";
+        model.addAttribute("title","시스템관리");
+        return "system";
     }
     @GetMapping("/employee/{employee_number}")
     public String employeeUpdate(@PathVariable String employee_number,Model model)

@@ -7,6 +7,7 @@ import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import com.example.mesttest.demo.Dto.EmployeeUpdateReqDto;
 import com.example.mesttest.demo.Dto.RegisterDto;
 import com.example.mesttest.demo.Dto.RegisterPositionDto;
+import com.example.mesttest.demo.Dto.menu.MenuDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -171,5 +172,20 @@ public class RegisterEmTest {
         List<RegisterPosition> all = Positionrep.findAll();
         assertThat(all.get(0).getPosition()).isEqualTo(text);
 //        List<String> tests = Positionrep.save(entity);
+    }
+
+    @Test
+    public void menuInsert()
+    {
+        MenuDto dto = MenuDto.builder()
+                .id(1L)
+                .test1("test1")
+                .test2("test2")
+                .test3("test3")
+                .test4("test4")
+                .test5("test5")
+                .test6("test6")
+                .build();
+
     }
 }
