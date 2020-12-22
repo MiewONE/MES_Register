@@ -222,7 +222,7 @@ var index ={
             state = true;
         } else {
             state = false;
-            jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width());
+            jQuery("#jqGrid").jqGrid('setGridWidth',$(window).width()-50);
             $('#InsertZone').empty();
         }
 

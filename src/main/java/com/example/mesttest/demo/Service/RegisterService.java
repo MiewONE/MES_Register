@@ -4,10 +4,12 @@ import com.example.mesttest.demo.Domain.RegisterEm;
 import com.example.mesttest.demo.Domain.Repository.MenuRepository;
 import com.example.mesttest.demo.Domain.Repository.RegisterPositionRepository;
 import com.example.mesttest.demo.Domain.Repository.RegisterRepository;
+import com.example.mesttest.demo.Domain.Repository.TitleMenuRepository;
 import com.example.mesttest.demo.Domain.defaultStructure.RegisterPosition;
 import com.example.mesttest.demo.Dto.menu.MenuResDto;
 import com.example.mesttest.demo.Dto.RegisterDto;
 import com.example.mesttest.demo.Dto.RegisterResDto;
+import com.example.mesttest.demo.Dto.menu.TitleMenuDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 public class RegisterService {
     private final RegisterRepository rep;
     private final MenuRepository menuRep;
+    private final TitleMenuRepository titleMenuRepository;
     private final RegisterPositionRepository positionRepository;
     @Transactional
     public String save(RegisterDto dto)
@@ -146,6 +149,11 @@ public class RegisterService {
     public List<MenuResDto> getMenu()
     {
         return menuRep.findAll().stream().map(MenuResDto::new).collect(Collectors.toList());
+    }
+    @Transactional
+    public void titleMenuSave(TitleMenuDto dto)
+    {
+        titleMenuRepository.save(dto.toEntity());
     }
 //    private boolean check(Class entity,String keyword)
 //    {

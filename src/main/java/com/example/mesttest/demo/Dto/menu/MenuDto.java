@@ -9,33 +9,38 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MenuDto {
     private Long id;
-    private String test1;
-    private String test2;
-    private String test3;
-    private String test4;
-    private String test5;
-    private String test6;
+
+    private String menuUrl;
+    private String menuClass;
+    private String useYN;
+    private String sortNo;
+    private String collapseYN;
+    private int depth;
+    private int parentId;
+    
     @Builder
-    public MenuDto(Long id,String test1,String test2,String test3,String test4,String test5,String test6)
+    public MenuDto(Long id,String menuUrl,String menuClass,String useYN,String sortNo,String collapseYN,int depth,int parentId)
     {
         this.id = id;
-        this.test1 = test1;
-        this.test2 = test2;
-        this.test3 = test3;
-        this.test4 = test4;
-        this.test5 = test5;
-        this.test6 = test6;
+        this.menuUrl = menuUrl;
+        this.menuClass = menuClass;
+        this.useYN = useYN;
+        this.sortNo = sortNo;
+        this.collapseYN = collapseYN;
+        this.depth = depth;
+        this.parentId = parentId;
     }
     public Menu toEntity()
     {
         return Menu.builder()
                 .id(id)
-                .test1(test1)
-                .test2(test2)
-                .test3(test3)
-                .test4(test4)
-                .test5(test5)
-                .test6(test6)
+                .menuUrl(menuUrl)
+                .menuClass(menuClass)
+                .useYN(useYN)
+                .sortNo(sortNo)
+                .collapseYN(collapseYN)
+                .depth(depth)
+                .parentId(parentId)
                 .build();
     }
 }
