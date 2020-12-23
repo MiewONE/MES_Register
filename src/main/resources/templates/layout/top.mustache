@@ -1,8 +1,11 @@
 <div class="top">
-    <div class="logo">Logo</div>
+    <div class="logo">{{title}}</div>
     <div class="menu">
-        {{#menu}}
-            <div class="menuItem" onclick="location.href='{{link}}';"> {{menuItem}}</div>
-        {{/menu}}
+        <div class="menuItemContainer">
+            {{#menu}}
+                <div class="menuItem" onclick="location.href='{{titleMenuUrl}}';"> {{titleMenuName}}</div>
+            {{/menu}}
+        </div>
+
     </div>
 </div>

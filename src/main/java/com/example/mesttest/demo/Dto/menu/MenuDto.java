@@ -13,13 +13,13 @@ public class MenuDto {
     private String menuUrl;
     private String menuClass;
     private String useYN;
-    private String sortNo;
+    private int sortNo;
     private String collapseYN;
     private int depth;
     private int parentId;
     
     @Builder
-    public MenuDto(Long id,String menuUrl,String menuClass,String useYN,String sortNo,String collapseYN,int depth,int parentId)
+    public MenuDto(Long id,String menuUrl,String menuClass,String useYN,int sortNo,String collapseYN,int depth,int parentId)
     {
         this.id = id;
         this.menuUrl = menuUrl;

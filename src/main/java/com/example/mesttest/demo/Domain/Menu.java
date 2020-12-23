@@ -18,13 +18,13 @@ public class Menu {
     @Column private String menuUrl;
     @Column private String menuClass;
     @Column private String useYN;
-    @Column private String sortNo;
+    @Column(unique = true) private int sortNo;
     @Column private String collapseYN;
     @Column private int depth;
     @Column private int parentId;
     
     @Builder
-    public Menu(Long id,String menuUrl,String menuClass,String useYN,String sortNo,String collapseYN,int depth,int parentId)
+    public Menu(Long id,String menuUrl,String menuClass,String useYN,int sortNo,String collapseYN,int depth,int parentId)
     {
         this.id = id;
         this.menuUrl = menuUrl;

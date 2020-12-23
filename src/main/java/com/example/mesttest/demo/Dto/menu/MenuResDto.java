@@ -12,7 +12,7 @@ public class MenuResDto {
     private String menuUrl;
     private String menuClass;
     private String useYN;
-    private String sortNo;
+    private int sortNo;
     private String collapseYN;
     private int depth;
     private int parentId;

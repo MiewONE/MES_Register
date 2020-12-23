@@ -132,14 +132,23 @@ tbody tr:nth-child(even){
     display : flex;
 
 }
-.top,.menu
+.top,.menu,.menuItemContainer,.nav
 {
     display : flex;
-
+}
+.menuItemContainer
+{
+    flex-direction : row;
+    justify-content: space-between;
 }
 .menu{
+    flex-direction : column-reverse;
     justify-content: space-between;
 }
 .logo{
     font-size: 2em;
+}
+.nav{
+    flex-direction : row;
+
 }

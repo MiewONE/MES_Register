@@ -15,15 +15,15 @@ import java.util.List;
 @Controller
 public class IndexController {
     private final RegisterService service;
-
     @GetMapping("/")
     public String Index(Model model)
     {
         model.addAttribute("title","홈페이지");
-        model.AddAttribute("menu",service.titleMenuSave();)
+        model.addAttribute("menu",service.findAlltitleMenu());
+        model.addAttribute("nav",service.findAllMenu());
         //기본페이지에서 보여줄 서브타이틀들을 불러와야함
         //디비에 넣어놨다가 가지고오는걸로 확장성가지게 하자.
-        model.addAttribute("nav",service.getMenu());
+//        model.addAttribute("nav",service.getMenu());
         return "main";
     }
     @GetMapping("/system")
