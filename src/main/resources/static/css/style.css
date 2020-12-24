@@ -132,18 +132,18 @@ tbody tr:nth-child(even){
     display : flex;
 
 }
-.top,.menu,.menuItemContainer,.nav
+.top,.menu,.nav
 {
     display : flex;
 }
 .menuItemContainer
 {
-    flex-direction : row;
-    justify-content: space-between;
+    display : flex;
+    justify-content: space-around;
 }
 .menu{
+    width:90%;
     flex-direction : column-reverse;
-    justify-content: space-between;
 }
 .logo{
     font-size: 2em;

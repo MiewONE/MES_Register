@@ -1,5 +1,6 @@
 package com.example.mesttest.demo.Service;
 
+import com.example.mesttest.demo.Domain.Menu;
 import com.example.mesttest.demo.Domain.RegisterEm;
 import com.example.mesttest.demo.Domain.Repository.MenuRepository;
 import com.example.mesttest.demo.Domain.Repository.RegisterPositionRepository;
@@ -14,11 +15,13 @@ import com.example.mesttest.demo.Dto.RegisterResDto;
 import com.example.mesttest.demo.Dto.menu.TitleMenuDto;
 import com.example.mesttest.demo.Dto.menu.TitleMenuResDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -107,6 +110,7 @@ public class RegisterService {
                 return rep.findAll().stream().map(RegisterResDto::new).collect(Collectors.toList());
 
         }
+
     }
     public List<RegisterPosition> View()
     {
@@ -163,9 +167,18 @@ public class RegisterService {
     {
         menuRep.save(dto.toEntity());
     }
+    @Transactional
+    public void menuDel(Long id)
+    {
+        menuRep.delete(menuRep.findByMenuUrlEquals(id));
+    }
     public List<TitleMenuResDto> findAlltitleMenu()
     {
-        return titleMenuRepository.findAll().stream().map(TitleMenuResDto::new).collect(Collectors.toList());
+        return titleMenuRepository.findAll(Sort.by(Sort.Direction.ASC,"priority")).stream().map(TitleMenuResDto::new).collect(Collectors.toList());
+    }
+    public void titleMenuDel(String id)
+    {
+        titleMenuRepository.delete(titleMenuRepository.findByTitleMenuName(id));
     }
     public List<MenuResDto> findAllMenu()
     {

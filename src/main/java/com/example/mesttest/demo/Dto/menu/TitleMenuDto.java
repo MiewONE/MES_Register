@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 public class TitleMenuDto {
     private String titleMenuName;
     private String titleMenuUrl;
+    private int priority;
 
     @Builder
-    public TitleMenuDto(String titleMenuUrl,String titleMenuName)
+    public TitleMenuDto(String titleMenuUrl,String titleMenuName,int priority)
     {
         this.titleMenuName = titleMenuName;
         this.titleMenuUrl = titleMenuUrl;
+        this.priority = priority;
     }
 
     public TitleMenu toEntity()
@@ -23,6 +25,7 @@ public class TitleMenuDto {
         return TitleMenu.builder()
                 .titleMenuName(titleMenuName)
                 .titleMenuUrl(titleMenuUrl)
+                .priority(priority)
                 .build();
     }
 }

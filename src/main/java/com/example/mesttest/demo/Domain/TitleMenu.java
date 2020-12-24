@@ -17,11 +17,14 @@ public class TitleMenu {
     private String titleMenuName;
     @Column
     private String titleMenuUrl;
+    @Column(unique = true)
+    private int priority;
 
     @Builder
-    public TitleMenu(String titleMenuName,String titleMenuUrl)
+    public TitleMenu(String titleMenuName,String titleMenuUrl,int priority)
     {
         this.titleMenuName = titleMenuName;
         this.titleMenuUrl = titleMenuUrl;
+        this.priority = priority;
     }
 }
