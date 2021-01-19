@@ -5,6 +5,9 @@
             {{#menu}}
                 <div class="menuItem" onclick="location.href='{{titleMenuUrl}}';"> {{titleMenuName}}</div>
             {{/menu}}
+            {{^menu}}
+                <p>저장된 TitleMenu 데이터가 없습니다.</p>
+            {{/menu}}
         </div>
 
     </div>

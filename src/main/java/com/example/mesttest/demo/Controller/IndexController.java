@@ -18,13 +18,20 @@ public class IndexController {
     @GetMapping("/")
     public String Index(Model model)
     {
-        model.addAttribute("title","홈페이지");
-        model.addAttribute("menu",service.findAlltitleMenu());
-        model.addAttribute("nav",service.findAllMenu());
+//        model.addAttribute("title","홈페이지");
+//        model.addAttribute("menu",service.findAlltitleMenu());
+//        model.addAttribute("nav",service.findAllMenu());
+        model = DefaultModel(model);
         //기본페이지에서 보여줄 서브타이틀들을 불러와야함
         //디비에 넣어놨다가 가지고오는걸로 확장성가지게 하자.
 //        model.addAttribute("nav",service.getMenu());
         return "main";
+    }
+    @GetMapping("/test")
+    public String homes(Model model)
+    {
+        model = DefaultModel(model);
+        return "home";
     }
     @GetMapping("/system")
     public String system(Model model)
@@ -76,4 +83,12 @@ public class IndexController {
         return "inputData";
     }
 
+
+    private Model DefaultModel(Model model)
+    {
+        model.addAttribute("title","홈페이지");
+        model.addAttribute("menu",service.findAlltitleMenu());
+        model.addAttribute("nav",service.findAllMenu());
+        return model;
+    }
 }

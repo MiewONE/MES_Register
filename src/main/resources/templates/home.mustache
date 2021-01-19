@@ -1,0 +1,29 @@
+{{>layout/_header}}
+<div class="bodyViewContainer">
+    <div class="navContainer">
+        <div class="navMenuButtonContainer">
+            <!-- MenuButton/MyMenuButton -->
+        </div>
+        <div class="navMenuSearch">
+            <!-- 메뉴검색 section -->
+
+        </div>
+        <div class="navMenuTitle">
+            <!-- 이미지를 올려놓고 선택된 메뉴가 바뀔시 텍스트변경 -->
+            test
+        </div>
+        <div class="navMenuContainer">
+            <!--  상세 메뉴들이 나와야함.-->
+            {{#nav}}
+                <div class="{{menuClass}}" onclick="location.href='{{menuUrl}}';">{{menuClass}}</div>
+            {{/nav}}
+            {{^nav}}
+                <p>저장된 Menu 데이터가 없습니다.</p>
+            {{/nav}}
+        </div>
+    </div>
+    <div class="contentContainer">
+        <!-- 버튼이나 여러화면을보여줘야 하는 부분 -->
+    </div>
+</div>
+{{>layout/_footer}}
